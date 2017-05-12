@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.css">
+	<link href="http://comprafacillingerie.vteximg.com.br/arquivos/style-comprafacillingerie.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="arquivos/OMMixingandmatch.css">
+	<link rel="stylesheet" href="arquivos/cores.css">
+	<link rel="stylesheet" href="arquivos/bootstrap.css">
+
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script> 
+	<script type="text/javascript" src="http://io.vtex.com.br/vtex.js/2.4.1/vtex.js" ></script> 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js"></script> 
+	<script type="text/javascript" src="arquivos/angular.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
+	<script type="text/javascript" src="arquivos/angular-locale_pt-br.js"></script>
+	<script type="text/javascript" src="arquivos/OMMixingandmatch.js"></script>	
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+
+</head>
+<body class="OMMixingandmatch">
+	<div class="wrapper">
+
+		<div id="OMMixingandmatch" ng-app="OMMixingandmatch" ng-controller="mainCtrl" ng-class="{'loading' : loading}"> 
+			<h1 class="titulo-1">Monte seu biquine</h1>
+			<!-- TABS -->
+			<div class="OMMixingandmatchContent">
+				<div class="tabs" >
+
+					<!-- TABS TOP -->
+					<div class="tab__head">
+						<a href="" class="logo"> Compra Fácil</a>
+						<div class="tab__items" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)">
+							<a class="tab__item">
+								<span>{{$index + 1}}</span>
+								<strong>{{group.title}}</strong>
+								<small>{{group.description}}</small>
+							</a>
+						</div>
+						<!-- <a href="" class="howWork">Como Funciona ?</a>	 -->
+					</div>
+
+					<!-- TABS CONTENT -->
+					<div class="tab__content active" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+						<div class="skuSelection">
+							<h3 class="skuSelection__title">Selecione abaixo</h3>
+							<div class="skuSelection__item {{category.idClass}}" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
+								<a class="skuSelection__link">{{category.title}}</a>
+								<div class="skuSelection__itemContent">
+									<ul class="skuSelection__list skuSelection__list--grade">
+										<li class="skuSelection__list__item {{filter.idClass}}" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
+											<a href="" class="skuSelection__item__link" ng-click="search(filter.param, idGroup)">
+												<div class="skuSelection__icon">
+													<i ng-bind-html="filter.ico"></i>
+												</div>
+												{{filter.title}}
+											</a>
+										</li>
+									</ul>								
+								</div>
+							</div>
+						</div>
+
+						<!-- TABS BODY -->					
+						<div class="tab__body product">
+							<ul class="product__list">
+								<li id="product_{{product.productId}}" class="product__item" ng-repeat="product in catalogResults[$index].items" ng-mouseenter="activeProduct(product)" >
+									<div class="product__image">
+										<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{product.activeImageId}}-315-460/foto.jpg" alt="">								
+										<a class="product__return" ng-mouseover="activeProduct(product,$index)" ng-show="activeProductIndex != null">
+											<i class="iconMixingAndMatch-arrow"></i>
+										</a>
+									</div>
+									<div class="product__info">
+										<!-- CATALOG PRODUCT -->
+										<ul class="product__sku {{variations.dimension}}" ng-repeat="variations in product.skuVariations">
+											<li class="product__skuItem {{variationClass(variations.dimension,optionValue)}}"
+												ng-repeat="(optionKey, optionValue) in variations.options"
+												ng-class="{'avaliable' : product.avaliableDimention[optionValue],'unavaliable' : !product.avaliableDimention[optionValue]}"
+												ng-click="filterSku(variations.dimension,optionValue,product);skuActive($event,product.productId,variationClass(variations.dimension,optionValue),variations.dimension)"
+											>
+												<span class="product__skuLink {{optionValue}}">
+													{{optionValue}}
+												</span>
+											</li>										
+										</ul>
+										
+										<div class="product__available" ng-show="product.notifyMe">Estoque indisponível</div>
+
+										<div class="product__price" ng-show="product.filteredSku.length && product.filteredSku[0].sellers[0].commertialOffer.AvailableQuantity">
+											<span class="product__oldPrice">{{product.filteredSku[0].sellers[0].commertialOffer.ListPrice | currency : 'R$ ' : 2}}</span>
+											<span class="product__newPrice">{{product.filteredSku[0].sellers[0].commertialOffer.Price | currency : 'R$ ' : 2}}</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>	
+
+					</div>
+				</div>
+
+				<!-- VIEW COMBINATION -->
+				<div class="combination">
+
+					<h2 class="combination__title">Sua combinação</h2>
+					<div class="combination__item" ng-repeat="(combinationKey, combinationValue) in combination">
+						<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{combinationValue.images[0].imageId + '-314-314'}}/{{combinationValue.nameComplete}}.jpg" alt="" class="no-item">
+						
+					</div>					
+					<!-- <a class="combination__include" ng-class="{disabled: combination.length < 2}" ng-click="cartAddItems()">Incluir Conjunto</a> -->
+					<a class="combination__include" ng-click="cartAddItems()">Incluir Conjunto</a>
+				</div>
+
+				<!-- CART RESUME -->				
+				<div class="combination combination--checkout">
+					<h2 class="combination__title">Resumo da compra</h2>
+					<ul class="checkoutList">
+						<li class="checkoutList__item" ng-repeat="item in orderForm.items" >
+							<a class="checkoutList__closed" ng-click="cartRemoveItem($index)">Fechar</a>
+							<span class="checkoutList__itemImage">
+								<img ng-src="{{item.imageUrl}}">								
+							</span>
+							<span class="checkoutList__label">
+								<h4 class="checkoutList__title">{{item.name}}</h4>
+							</span>
+							<div class="checkoutList__price">
+								<span class="checkoutList__oldPrice" ng-show="item.sellingPrice > item.price">{{item.listPrice | currency : 'R$ ' : 2}}</span>
+								<span class="checkoutList__newPrice">{{item.price | currency : 'R$ ' : 2}}</span>
+							</div>
+							<a href="{{item.detailUrl}}" class="product__addList">Ver</a>
+						</li>
+					</ul>
+					<div class="checkoutList__instalment">
+						<div class="checkoutList__price">
+							<span class="">Valor total</span>
+							<span class="checkoutList__newPrice">{{orderForm.value | currency : 'R$ ' : 2}}</span>
+							<a href="/checkout/#/orderform" class="product__addList">Finalizar compra</a>
+
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+</html>

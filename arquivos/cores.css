@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+.skuespec_Cor_opcao_Preto, .skuespec_Cor_opcao_Preto, .skuespec_Preto:before, .skuespec_Preto:before, .sr_preto:before{	background-color:#000000;}
+.skuespec_Cor_opcao_Vermelho, .skuespec_Cor_opcao_Vermelho, .skuespec_Vermelho:before, .skuespec_Vermelho:before, .sr_vermelho:before{	background-color:#ff0000;}
+.skuespec_Cor_opcao_Branco, .skuespec_Cor_opcao_Branco, .skuespec_Branco:before, .skuespec_Branco:before, .sr_branco:before{	background-color:#ffffff;}
+.skuespec_Cor_opcao_Azul-caneta, .skuespec_Cor_opcao_Azulcaneta, .skuespec_Azul-caneta:before, .skuespec_Azulcaneta:before, .sr_azul-caneta:before{	background-color:#0028fa;}
+.skuespec_Cor_opcao_Verde-agua, .skuespec_Cor_opcao_Verdeagua, .skuespec_Verde-agua:before, .skuespec_Verdeagua:before, .sr_verde-agua:before{	background-color:#07b07d;}
+.skuespec_Cor_opcao_Cinza, .skuespec_Cor_opcao_Cinza, .skuespec_Cinza:before, .skuespec_Cinza:before, .sr_cinza:before{	background-color:#7a7a7a;}
+.skuespec_Cor_opcao_Amarelo, .skuespec_Cor_opcao_Amarelo, .skuespec_Amarelo:before, .skuespec_Amarelo:before, .sr_amarelo:before{	background-color:#ffd600;}
+.skuespec_Cor_opcao_Rosa-escuro, .skuespec_Cor_opcao_Rosaescuro, .skuespec_Rosa-escuro:before, .skuespec_Rosaescuro:before, .sr_rosa-escuro:before{	background-color:#f70094;}
+.skuespec_Cor_opcao_Onca, .skuespec_Cor_opcao_Onca, .skuespec_Onca:before, .skuespec_Onca:before, .sr_onca:before{background: url('/arquivos/onca-5.jpg') no-repeat;}
+.skuespec_Cor_opcao_Lilas, .skuespec_Cor_opcao_Lilas, .skuespec_Lilas:before, .skuespec_Lilas:before, .sr_lilas:before{	background-color:#bc81f7;}
+.skuespec_Cor_opcao_Azul-marinho, .skuespec_Cor_opcao_Azulmarinho, .skuespec_Azul-marinho:before, .skuespec_Azulmarinho:before, .sr_azul-marinho:before{	background-color:#1a0d6b;}
+.skuespec_Cor_opcao_Verde-escuro, .skuespec_Cor_opcao_Verdeescuro, .skuespec_Verde-escuro:before, .skuespec_Verdeescuro:before, .sr_verde-escuro:before{	background-color:#0b5e0f;}
+.skuespec_Cor_opcao_Roxo, .skuespec_Cor_opcao_Roxo, .skuespec_Roxo:before, .skuespec_Roxo:before, .sr_roxo:before{	background-color:#861bab;}
+.skuespec_Cor_opcao_Verde-claro, .skuespec_Cor_opcao_Verdeclaro, .skuespec_Verde-claro:before, .skuespec_Verdeclaro:before, .sr_verde-claro:before{	background-color:#7ecf90;}
+.skuespec_Cor_opcao_Azul-claro, .skuespec_Cor_opcao_Azulclaro, .skuespec_Azul-claro:before, .skuespec_Azulclaro:before, .sr_azul-claro:before{	background-color:#28bdde;}
+.skuespec_Cor_opcao_Chocolate-escuro, .skuespec_Cor_opcao_Chocolateescuro, .skuespec_Chocolate-escuro:before, .skuespec_Chocolateescuro:before, .sr_chocolate-escuro:before{	background-color:#6e3312;}
+.skuespec_Cor_opcao_Azul-bebe, .skuespec_Cor_opcao_Azulbebe, .skuespec_Azul-bebe:before, .skuespec_Azulbebe:before, .sr_azul-bebe:before{	background-color:#b8e5ff;}
+.skuespec_Cor_opcao_Chocolate, .skuespec_Cor_opcao_Chocolate, .skuespec_Chocolate:before, .skuespec_Chocolate:before, .sr_chocolate:before{	background-color:#bf7a49;}
+.skuespec_Cor_opcao_Creme, .skuespec_Cor_opcao_Creme, .skuespec_Creme:before, .skuespec_Creme:before, .sr_creme:before{	background-color:#f2e6a5;}
+.skuespec_Cor_opcao_Goiaba, .skuespec_Cor_opcao_Goiaba, .skuespec_Goiaba:before, .skuespec_Goiaba:before, .sr_goiaba:before{	background-color:#ff5e2b;}
+.skuespec_Cor_opcao_Marfim, .skuespec_Cor_opcao_Marfim, .skuespec_Marfim:before, .skuespec_Marfim:before, .sr_marfim:before{	background-color:#f5d76e;}
+.skuespec_Cor_opcao_Rosa-bebe, .skuespec_Cor_opcao_Rosabebe, .skuespec_Rosa-bebe:before, .skuespec_Rosabebe:before, .sr_rosa-bebe:before{	background-color:#facff1;}
+.skuespec_Cor_opcao_-rosa-claro, .skuespec_Cor_opcao_Rosaclaro, .skuespec_-rosa-claro:before, .skuespec_Rosaclaro:before, .sr_-rosa-claro:before{	background-color:#fc81d2;}
+.skuespec_Cor_opcao_Salmon, .skuespec_Cor_opcao_Salmon, .skuespec_Salmon:before, .skuespec_Salmon:before, .sr_salmon:before{	background-color:#ff7878;}
+.skuespec_Cor_opcao_Vinho, .skuespec_Cor_opcao_Vinho, .skuespec_Vinho:before, .skuespec_Vinho:before, .sr_vinho:before{	background-color:#ad1010;}
