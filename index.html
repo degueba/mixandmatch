@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="arquivos/OMMixingandmatch.css">
 	<link rel="stylesheet" href="arquivos/cores.css">
 	<link rel="stylesheet" href="arquivos/bootstrap.css">
+	<!--Plugin Step -->
+	<link rel="stylesheet" href="arquivos/bootstrap-tour.min.css">
+	<!---->
 
 	<script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script> 
 	<script type="text/javascript" src="http://io.vtex.com.br/vtex.js/2.4.1/vtex.js" ></script> 
@@ -18,6 +21,8 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
 	<script type="text/javascript" src="arquivos/angular-locale_pt-br.js"></script>
 	<script type="text/javascript" src="arquivos/OMMixingandmatch.js"></script>	
+	<script type="text/javascript" src="arquivos/bootstrap.min.js"></script>
+	<script type="text/javascript" src="arquivos/bootstrap-tour.min.js"></script>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 
 
@@ -30,11 +35,43 @@
 			<div class="OMMixingandmatchContent">
 				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-8 col-xs-12">
+						<div class="col-md-2 col-sm-3">
+							<a href="" class="logo"> Compra Fácil</a>
+							
+							<div class="col-sm-12 col-xs-12">
+								<div class="rex-mix-and-match-filters" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+									<h6>Selecione abaixo</h6>
+										<div class="row">
+											<div class="rex-mix-and-match-filters-box-wrap">
+												<div class="rex-mix-and-match-filters-box col-md-12 col-sm-12 col-xs-12 skuSelection__item {{category.idClass}}" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
+													<div class="panel panel-default">
+														<div class="panel-body">
+															{{category.title}}
+														</div>
+													</div>
+													
+													<!--Filters-->
+													<div class="popover fade right">
+														<div class="arrow"></div>
+														<div class="popover-content {{filter.idClass}}" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
+															<a href="" class="rex-mix-and-match-filters-box-link" ng-click="search(filter.param, idGroup)">
+																<i ng-bind-html="filter.ico"></i>
+																<span>{{filter.title}}</span>
+															</a>                                 
+														</div>
+													</div>
+
+
+												</div> <!-- rex-mix-and-match-filters-box -->
+											</div>
+										</div>
+									</div>
+							   </div>
+						</div>
+						<div class="col-md-6 col-sm-9 col-xs-12">
 							<!-- TABS TOP -->
 							<ul class="nav nav-tabs">
-								<li><a href="" class="logo"> Compra Fácil</a></li>
-								<li class="active" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)" data-toggle="tab" aria-expanded="true">
+								<li class="active" id="step-{{$index}}" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)" data-toggle="tab" aria-expanded="true">
 									<a href="#top">
 										<span>{{$index + 1}}</span>
 										<h3>{{group.title}}</h3>
@@ -45,34 +82,6 @@
 
 							<!-- TABS CONTENT -->
 							<div id="rex-mm-list" class="tab-content" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
-								 <div class="tab-pane fade active in" id="top">
-									<div class="col-sm-3 col-xs-12">
-										<div class="rex-mix-and-match-filters">
-											<h6>Selecione abaixo</h6>
-												<div class="row">
-													<div class="rex-mix-and-match-filters-box-wrap">
-														<div class="rex-mix-and-match-filters-box col-sm-12 col-xs-4 skuSelection__item {{category.idClass}}" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
-															<div class="panel panel-default">
-																<div class="panel-body">
-																	{{category.title}}
-																</div>
-															</div>
-															<div class="popover fade right">
-															<div class="arrow"></div>
-															<div class="popover-content {{filter.idClass}}" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
-																<a href="" class="rex-mix-and-match-filters-box-link" ng-click="search(filter.param, idGroup)">
-																	<i ng-bind-html="filter.ico"></i>
-																	<span>{{filter.title}}</span>
-																</a>                                 
-															</div>
-															</div>
-														</div> <!-- rex-mix-and-match-filters-box -->
-													</div>
-												</div>
-										   </div>
-									  </div>
-							  	   </div>
-
 									<!-- TABS BODY -->
 									<div class="col-sm-12 col-xs-12">
 										<ul class="product__list">
@@ -126,15 +135,15 @@
 									   </div>
 									<!---->
 							    </div>
-								<div class="tab-pane fade" id="bottom">
+								<!--<div class="tab-pane fade" id="bottom">
 										<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-								</div><!-- bottom -->
+								</div> -->
 							  <!---->
 						 </div>
 
 						 <!-- VIEW COMBINATION -->
 						 <div class="col-md-2  col-xs-6">
-							<div class="rex-mix-and-match-box-wrapper">
+							<div class="rex-mix-and-match-box-wrapper" id="box-combinacao">
 								<div class="rex-mix-and-match-box">
 									<div class="panel panel-default">
 										<div class="panel-heading">Sua combinação</div>
@@ -156,7 +165,7 @@
 
 						  <!-- CART RESUME -->
 						  <div class="col-md-2 col-xs-6">
-								<div class="rex-mix-and-match-box-wrapper">
+								<div class="rex-mix-and-match-box-wrapper" id="box-resumo">
 									<div class="rex-mix-and-match-box">
 										<div class="panel panel-default">
 											<div class="panel-heading">Resumo da compra</div>
@@ -182,9 +191,7 @@
 											</div>
 										</div>
 
-										<div class="rex-mix-and-match-box-content">
 											<a href="/checkout/#/orderform" class="btn btn-primary btn-block">Comprar conjunto</a>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -196,5 +203,74 @@
 		
 	</div>
 
+
+	<script type="text/javascript">
+		$(function() {
+			var conteudoPai = $(".product__list, .rex-mix-and-match-box").parents('.OMMixingandmatchContent');
+			var alturaMonitor = $(window).height();
+			var alturaTab = $('.titulo-1').height();
+
+			if(conteudoPai.css('max-height') == "none"){
+				$(".product__list").height(alturaMonitor - alturaTab - $("#step-0").height() - 10);
+				$(".rex-mix-and-match-box").height(alturaMonitor - alturaTab - 40);
+			} else {
+				$(".product__list").height(conteudoPai.css('max-height'));
+				$(".rex-mix-and-match-box").height(conteudoPai.css('max-height'));
+			}
+			
+			// Instance the tour
+			var tour = new Tour({
+				storage: false,
+				template: "<div class='popover tour'><div class='arrow'></div> <h3 class='popover-title'></h3> <div class='popover-content'></div> <div class='popover-navigation'><button class='btn btn-default' data-role='prev'>Voltar</button> <button class='btn btn-default' data-role='next'>Entendi</button>    </div><button class='btn btn-block btn-primary' data-role='end'>PULAR APRESENTAÇÃO</button></div>",
+				steps: [
+				{
+					element: "#step-0",
+					title: "(1 de 8) Abas/Partes de biquini",
+					content: "Navegue pelas abas para montar o seu biquíni. Na aba TOP você irá escolher a parte de cima, e na aba CALCINHA a parte de baixo."
+				},
+				{
+					element: "#tab-0",
+					title: "(2 de 8) Variações de Produtos",
+					content: "Selecione ao lado as variações correspondentes ao MODELO do biquíni, COR/ESTAMPA e TAMANHO para encontrar o seu produto ideal."
+				},
+				{
+					element: "#rex-mm-list",
+					title: "(3 de 8) Resultados",
+					content: "Os resultados serão carregados nesse espaço de acordo com a sua seleção de modelo, cor/estampa e tamanho."
+				},
+				{
+					element: "#box-combinacao",
+					title: "(4 de 8) Combinação",
+					content: "Nesta ârea você poderâ visualizar o resultado da combinação da escolha para a parte de cima (TOP) e para a parte de baixo (CALÇA)."
+				},
+				{
+					element: "#box-combinacao",
+					title: "(5 de 8) Combinação",
+					content: "Poderá também incluir ou não no resumo de compra, o produto escolhido anteriormente."
+				}, 
+				{
+					element: "#box-combinacao",
+					title: "(6 de 8) Combinação",
+					content: "Além disso, ao selecionar um produto, você poderá escolher entre querer ver uma sugestão da Compra Facil para o seu produto escolhido ou escolher pessoalmente o produto. Ao Final de escolha do TOP e da CALCINHA, você poderá salvar a combinação. Para visualizar todas as salvas , clique no botão"
+				},
+				{
+					element: "#box-resumo",
+					title: "(7 de 8) Resumo da compra",
+					content: "Nesta área você visualizará todos os produtos que foram incluídos no resumo de compra. Poderá alterar produto, deletar e alterar o tamanho.",
+					placement: "left"
+				},
+				{
+					element: "#step-0",
+					title: "(8 de 8) Resumo da compra",
+					content: "Existe a opção de comprar o produto separadamente ou comprar todos os produtos incluindo no resumo de compra."
+				}
+			]});
+
+			// Initialize the tour
+			tour.init();
+			tour.start();
+			
+		});
+	</script>
 </body>
 </html>

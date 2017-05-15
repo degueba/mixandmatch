@@ -9052,8 +9052,8 @@ yx-axis
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis; }
-    .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-box-content {
-      padding: 0 15px; }
+    .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-box-content, .rex-mix-and-match-shelf-buy{
+       height: 90%;}
     .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-prods {
       min-height: 180px; }
       .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-prods .rex-box-banner {
