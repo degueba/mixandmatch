@@ -9040,7 +9040,7 @@ yx-axis
     display: block; }
 
 .rex-mix-and-match-box-wrapper {
-  margin-top: 95px; }
+  }
   .rex-mix-and-match-box-wrapper .rex-mix-and-match-box {
     border: 1px solid #ecf0f1;
     border-radius: 4px;
@@ -9055,17 +9055,15 @@ yx-axis
     .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-box-content {
       padding: 0 15px; }
     .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-prods {
-      min-height: 380px; }
+      min-height: 180px; }
       .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-prods .rex-box-banner {
         max-width: 130px;
         margin: 0 auto 15px auto; }
         .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-prods .rex-box-banner:last-child {
           margin-bottom: 0; }
     .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-buy {
-      max-height: 370px;
       padding-left: 15px;
-      overflow: auto;
-      margin-bottom: 10px; }
+      overflow: auto; }
       .rex-mix-and-match-box-wrapper .rex-mix-and-match-box .rex-mix-and-match-shelf-buy .mCSB_container {
         margin-right: 20px; }
     @media (max-width: 991px) {

@@ -24,18 +24,16 @@
 
 </head>
 <body class="OMMixingandmatch">
-	<div class="wrapper">
 		<div id="OMMixingandmatch" ng-app="OMMixingandmatch" ng-controller="mainCtrl" ng-class="{'loading' : loading}"> 
 			<h1 class="titulo-1">Monte seu biquine</h1>
 			<!-- TABS -->
 			<div class="OMMixingandmatchContent">
-				<div class="container" >
+				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-8 col-xs-12">
-							<a href="" class="logo"> Compra Fácil</a>
-
 							<!-- TABS TOP -->
 							<ul class="nav nav-tabs">
+								<li><a href="" class="logo"> Compra Fácil</a></li>
 								<li class="active" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)" data-toggle="tab" aria-expanded="true">
 									<a href="#top">
 										<span>{{$index + 1}}</span>
@@ -76,7 +74,7 @@
 							  	   </div>
 
 									<!-- TABS BODY -->
-									<div class="col-sm-9 col-xs-12">
+									<div class="col-sm-12 col-xs-12">
 										<ul class="product__list">
 											<li id="product_{{product.productId}}" layout="0150b174-be14-41b3-a6e9-d84b22a7b694" class="product__item" ng-repeat="product in catalogResults[$index].items" ng-mouseenter="activeProduct(product)">
 												<div class="shelf-wrap">
@@ -142,9 +140,11 @@
 										<div class="panel-heading">Sua combinação</div>
 									</div>
 									<div class="rex-mix-and-match-box-content">
-										<div class="rex-mix-and-match-shelf-prods" ng-repeat="(combinationKey, combinationValue) in combination">
-											<div class="rex-box-banner">
-												<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{combinationValue.images[0].imageId + '-314-314'}}/{{combinationValue.nameComplete}}.jpg" alt="" class="no-item">
+										<div class="rex-mix-and-match-shelf-container">
+											<div class="rex-mix-and-match-shelf-prods" ng-repeat="(combinationKey, combinationValue) in combination">
+												<div class="rex-box-banner">
+													<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{combinationValue.images[0].imageId + '-314-314'}}/{{combinationValue.nameComplete}}.jpg" alt="" class="no-item">
+												</div>
 											</div>
 										</div>
 										<a href="#" class="btn btn-primary btn-block" ng-click="cartAddItems()">Incluir conjunto</a>
@@ -162,19 +162,21 @@
 											<div class="panel-heading">Resumo da compra</div>
 										</div>
 										<div class="rex-mix-and-match-shelf-buy">
-											<div class="rex-mix-and-match-shelf-item" ng-repeat="item in orderForm.items">
-												<a class="rex-mix-and-match-shelf-item-remove" ng-click="cartRemoveItem($index)"><i class="icon-cog"></i></a>
-												<div class="rex-box-banner">
-													<img ng-src="{{item.imageUrl}}" width="55" height="55"/>                
-												</div>
-												<div class="rex-mix-and-match-shelf-item-info">
-													<p>{{item.name}}</p>
-													<div class="rex-product-price">
-														<span class="best-price">Por <strong>{{item.price | currency : 'R$ ' : 2}}</strong></span>
-														<span class="installment">
-															de
-															<strong class="value-installment" ng-show="item.sellingPrice > item.price">{{item.listPrice | currency : 'R$ ' : 2}}</strong>
-														</span>
+											<div class="rex-mix-and-match-shelf-container">
+												<div class="rex-mix-and-match-shelf-item" ng-repeat="item in orderForm.items">
+													<a class="rex-mix-and-match-shelf-item-remove" ng-click="cartRemoveItem($index)"><i class="icon-cog"></i></a>
+													<div class="rex-box-banner">
+														<img ng-src="{{item.imageUrl}}" width="55" height="55"/>                
+													</div>
+													<div class="rex-mix-and-match-shelf-item-info">
+														<p>{{item.name}}</p>
+														<div class="rex-product-price">
+															<span class="best-price">Por <strong>{{item.price | currency : 'R$ ' : 2}}</strong></span>
+															<span class="installment">
+																de
+																<strong class="value-installment" ng-show="item.sellingPrice > item.price">{{item.listPrice | currency : 'R$ ' : 2}}</strong>
+															</span>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -191,7 +193,6 @@
 					</div>
 				</div>				
 			</div>
-		</div>
 		
 	</div>
 
