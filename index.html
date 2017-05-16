@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="arquivos/OMMixingandmatch.css">
 	<link rel="stylesheet" href="arquivos/cores.css">
 	<link rel="stylesheet" href="arquivos/bootstrap.css">
+	<link rel="stylesheet" href="arquivos/font-awesome.min.css">
 	<!--Plugin Step -->
 	<link rel="stylesheet" href="arquivos/bootstrap-tour.min.css">
 	<!---->
@@ -37,8 +38,38 @@
 					<div class="row">
 						<div class="col-md-2 col-sm-3">
 							<a href="" class="logo"> Compra Fácil</a>
+
+							<!-- FILTERS MOBILE -->
+							<div class="col-sm-12 col-xs-12 visible-xs">
+								<button class="btn btn-default btn-block btn-filter hamburger is-closed" data-toggle="offcanvas">
+									 Filtros
+								</button>
 							
-							<div class="col-sm-12 col-xs-12">
+
+								<div id="wrapper">
+									<div class="overlay"></div>
+								
+									<!-- Sidebar -->
+									<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+										<span class="fa fa-times pull-right btn-filter-close" aria-hidden="true" data-toggle="offcanvas"></span>
+										<ul class="nav sidebar-nav" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+											<li class="dropdown" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{category.title}} <span class="caret"></span></a>
+												<ul class="dropdown-menu" role="menu">
+													<li class="dropdown-header" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
+														<a href="#" ng-click="search(filter.param, idGroup)"><i ng-bind-html="filter.ico"></i> <span>{{filter.title}}</span></a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!-- /#sidebar-wrapper -->
+							<!---->
+							   
+							<!--FILTERS DESK-->
+							<div class="col-sm-12 col-xs-12 hidden-xs">
 								<div class="rex-mix-and-match-filters" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
 									<h6>Selecione abaixo</h6>
 										<div class="row">
@@ -67,6 +98,7 @@
 										</div>
 									</div>
 							   </div>
+							   <!---->
 						</div>
 						<div class="col-md-6 col-sm-9 col-xs-12">
 							<!-- TABS TOP -->
@@ -142,7 +174,7 @@
 						 </div>
 
 						 <!-- VIEW COMBINATION -->
-						 <div class="col-md-2  col-xs-6">
+						 <div class="col-md-2  col-xs-12">
 							<div class="rex-mix-and-match-box-wrapper" id="box-combinacao">
 								<div class="rex-mix-and-match-box">
 									<div class="panel panel-default">
@@ -164,7 +196,7 @@
 						  <!---->
 
 						  <!-- CART RESUME -->
-						  <div class="col-md-2 col-xs-6">
+						  <div class="col-md-2 col-xs-12">
 								<div class="rex-mix-and-match-box-wrapper" id="box-resumo">
 									<div class="rex-mix-and-match-box">
 										<div class="panel panel-default">
@@ -225,50 +257,62 @@
 				steps: [
 				{
 					element: "#step-0",
-					title: "(1 de 8) Abas/Partes de biquini",
-					content: "Navegue pelas abas para montar o seu biquíni. Na aba TOP você irá escolher a parte de cima, e na aba CALCINHA a parte de baixo."
+					title: "(1 de 5) Abas/Partes de biquini",
+					content: "Navegue pelas abas para montar o seu biquíni. Na aba TOP você escolherá a parte de cima, e na aba CALCINHA a parte de baixo."
 				},
 				{
 					element: "#tab-0",
-					title: "(2 de 8) Variações de Produtos",
+					title: "(2 de 5) Variações de Produtos",
 					content: "Selecione ao lado as variações correspondentes ao MODELO do biquíni, COR/ESTAMPA e TAMANHO para encontrar o seu produto ideal."
 				},
 				{
 					element: "#rex-mm-list",
-					title: "(3 de 8) Resultados",
+					title: "(3 de 5) Resultados",
 					content: "Os resultados serão carregados nesse espaço de acordo com a sua seleção de modelo, cor/estampa e tamanho."
 				},
 				{
 					element: "#box-combinacao",
-					title: "(4 de 8) Combinação",
-					content: "Nesta ârea você poderâ visualizar o resultado da combinação da escolha para a parte de cima (TOP) e para a parte de baixo (CALÇA)."
-				},
-				{
-					element: "#box-combinacao",
-					title: "(5 de 8) Combinação",
-					content: "Poderá também incluir ou não no resumo de compra, o produto escolhido anteriormente."
-				}, 
-				{
-					element: "#box-combinacao",
-					title: "(6 de 8) Combinação",
-					content: "Além disso, ao selecionar um produto, você poderá escolher entre querer ver uma sugestão da Compra Facil para o seu produto escolhido ou escolher pessoalmente o produto. Ao Final de escolha do TOP e da CALCINHA, você poderá salvar a combinação. Para visualizar todas as salvas , clique no botão"
+					title: "(4 de 5) Combinação",
+					content: "Nesta ârea você visualizará o resultado da combinação da parte de cima do seu biquini (TOP) e da parte de baixo (CALCINHA), podendo também incluir ou não no resumo da compra algum produto escolhido anteriormente."
 				},
 				{
 					element: "#box-resumo",
-					title: "(7 de 8) Resumo da compra",
-					content: "Nesta área você visualizará todos os produtos que foram incluídos no resumo de compra. Poderá alterar produto, deletar e alterar o tamanho.",
+					title: "(5 de 5) Resumo da compra",
+					content: "Nesta área você visualizará todos os produtos que foram incluídos no resumo de compra. Podendo alterar, deletar ou alterar o produto ou suas informações.",
 					placement: "left"
-				},
-				{
-					element: "#step-0",
-					title: "(8 de 8) Resumo da compra",
-					content: "Existe a opção de comprar o produto separadamente ou comprar todos os produtos incluindo no resumo de compra."
 				}
 			]});
 
 			// Initialize the tour
 			tour.init();
 			tour.start();
+
+			/*Menu Filters Mobile*/
+			var trigger = $('.hamburger, .btn-filter-close'),
+				overlay = $('.overlay'),
+				isClosed = false;
+
+				trigger.click(function () {
+					hamburger_cross();      
+				});
+
+				function hamburger_cross() {
+					if (isClosed == true) {          
+						overlay.hide();
+						trigger.removeClass('is-open');
+						trigger.addClass('is-closed');
+						isClosed = false;
+					} else {   
+						overlay.show();
+						trigger.removeClass('is-closed');
+						trigger.addClass('is-open');
+						isClosed = true;
+					}
+				}
+			
+			$('[data-toggle="offcanvas"]').click(function () {
+					$('#wrapper').toggleClass('toggled');
+			});  
 			
 		});
 	</script>
