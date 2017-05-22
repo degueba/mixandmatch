@@ -32,6 +32,9 @@ String.prototype.capitalize = function() {
 
 var app = angular.module("OMMixingandmatch",['ngSanitize'])
 
+
+
+
 app.factory('vtexService',function($http) {
 
 	var storeUrl = 'www.comprafacillingerie.com.br';
@@ -460,7 +463,9 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 
 	$scope.search = function(param,idGroup,increment){ // faz a busca de produtos baseado no 'param'
 		//console.log(increment)
-
+		
+		$('.owl-carousel').trigger('destroy.owl.carousel');
+		
 		var page = '0-10';
 		$scope.searchParamActive = param;
 
@@ -593,5 +598,9 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 			_prepareOrderForm(orderForm);
 		})
     })
+
+	$scope.triggerEvent = function(triggerName){
+		$(window).trigger(triggerName)
+	}
 }])
 
