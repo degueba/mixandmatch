@@ -463,8 +463,10 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 
 
 	$scope.search = function(param,idGroup,increment){ // faz a busca de produtos baseado no 'param'
-		//console.log($scope.catalogResults[idGroup].items.length);
+		
 		var qtdItemsAntiga = $scope.catalogResults[idGroup].items.length;
+		
+
 		$('.owl-'+ idGroup).trigger('destroy.owl.carousel');
 		
 
@@ -480,6 +482,8 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 			page = $scope.catalogResults[idGroup].page * 10;
    			page = (page + 1) + '-' + (page+10);
 		}
+
+		
 
 
 	
@@ -501,15 +505,18 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 				//console.log('============================================== carregando ' + $scope.categoryFilters[idGroup].title + ' ==============================================')
 				
 				$scope.catalogResults[idGroup].page = 1;			
-				$scope.catalogResults[idGroup].items = _generateSkuVariation(result.data);			
+				$scope.catalogResults[idGroup].items = _generateSkuVariation(result.data);	
+
+					
 			}
+			
 			
 
 			if(result.status == '206'){
 				$scope.catalogResults[idGroup].nextPage = true;
 			}
 
-			console.log(increment);
+			$(".qtd-prod-" + idGroup).html("(" + $scope.catalogResults[idGroup].items.length + ")");
 			
 			if(increment) {
 
@@ -549,6 +556,7 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 
 				}, 1000);
 
+				
 				
 			}
 			//console.info($scope.catalogResults)

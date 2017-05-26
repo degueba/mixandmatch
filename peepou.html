@@ -77,7 +77,7 @@
 								<ul class="nav nav-tabs">
 									<li class="active" id="step-{{$index}}" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)" data-toggle="tab" aria-expanded="true">
 										<a href="#top" class="tab-title-peepou">
-											<h3>{{group.title}}</h3>
+											<h3>{{group.title}}  <small class="qtd-prod-{{$index}}"></small></h3> 
 											<div class="product-choose-mobile visible-xs" >
 													<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{combination[$index].images[0].imageId + '-314-314'}}/{{combination[$index].nameComplete}}.jpg" alt="" class="no-item">
 											</div>
