@@ -33,7 +33,7 @@ String.prototype.capitalize = function() {
 var app = angular.module("OMMixingandmatch",['ngSanitize'])
 
 
-
+	
 
 app.factory('vtexService',function($http) {
 
@@ -87,6 +87,7 @@ app.factory('vtexService',function($http) {
 
 app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($scope,$filter,$http,vtexService){
    
+
 	$scope.orderForm = {};
 
 	//loading
@@ -462,10 +463,13 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 
 
 	$scope.search = function(param,idGroup,increment){ // faz a busca de produtos baseado no 'param'
-		//console.log(increment)
+		//console.log($scope.catalogResults[idGroup].items.length);
+		var qtdItemsAntiga = $scope.catalogResults[idGroup].items.length;
+		$('.owl-'+ idGroup).trigger('destroy.owl.carousel');
 		
-		$('.owl-carousel').trigger('destroy.owl.carousel');
-		
+
+	   //	if(idGroup)
+
 		var page = '0-10';
 		$scope.searchParamActive = param;
 
@@ -479,14 +483,12 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 
 
 	
-   		//console.log("paginação: " + page)
+   		//console.log(idGroup);
    		
    		//request ==================================
 		var request = vtexService.search(param,page)
 		request.then(function(result){			
-			
 			if($scope.catalogResults[idGroup].nextPage && increment){
-				
 				//console.log('============================================== incrementando ' + $scope.categoryFilters[idGroup].title + ' ==============================================')
 				
 				result.data = _generateSkuVariation(result.data)
@@ -499,14 +501,56 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 				//console.log('============================================== carregando ' + $scope.categoryFilters[idGroup].title + ' ==============================================')
 				
 				$scope.catalogResults[idGroup].page = 1;			
-				$scope.catalogResults[idGroup].items 	= _generateSkuVariation(result.data);			
+				$scope.catalogResults[idGroup].items = _generateSkuVariation(result.data);			
 			}
 			
 
 			if(result.status == '206'){
 				$scope.catalogResults[idGroup].nextPage = true;
 			}
+
+			console.log(increment);
 			
+			if(increment) {
+
+				function moved(event) {
+					var items = event.item.count;
+					var item  = event.item.index + 1;
+
+
+					if((item+1) == items){
+						qtdAntigo = items;
+						$scope.search($scope.searchParamActive,$scope.selectedGroup,true);
+					}
+				}
+
+				$("#list-products").append("<img src='arquivos/loading.gif' class='center-block loading-carousel' />");
+
+				setTimeout(function() {
+					$('.owl-'+ idGroup).owlCarousel({
+						autoWidth:true,
+						nav: true,
+						items: 1,
+						lazyLoad : true,
+						responsive:{
+							600:{
+								items:1
+							}
+						},
+						center: true,
+						navText : ["&#8678;","&#8680;"],
+						autoHeight:true,
+						onChange: moved
+					});
+					
+					$('.owl-'+ idGroup).trigger('to.owl.carousel', qtdItemsAntiga+1);
+
+					$('.loading-carousel').fadeOut('slow').remove();
+
+				}, 1000);
+
+				
+			}
 			//console.info($scope.catalogResults)
 		},function(err){
 			//console.error(err);
@@ -596,11 +640,56 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 
 		angular.element(window).on('cartProductAdded.vtex', function(evt, orderForm){
 			_prepareOrderForm(orderForm);
-		})
+		});
+
+		function moved(event) {
+			var items = event.item.count;
+			var item  = event.item.index + 1;
+
+
+			if((item+1) == items){
+				var qtdAntigo = items;
+				$scope.search($scope.searchParamActive,$scope.selectedGroup,true);
+			}
+		}
+
+		var carousel = false;
+		$(window).on('recarregarSlide',function(){
+			if(!carousel){
+				setTimeout(function() {
+					for(var i=0; i < $('.owl-carousel').length; i++){
+						$('.owl-'+ i).owlCarousel({
+							autoWidth:true,
+							nav: true,
+							items: 1,
+							lazyLoad : true,
+							responsive:{
+								600:{
+									items:1
+								}
+							},
+							center: true,
+							navText : ["&#8678;","&#8680;"],
+							autoHeight:true,
+							onChange: moved
+						});
+					}
+				}, 1000);
+			}
+			carousel = true;
+
+			
+		});
     })
 
 	$scope.triggerEvent = function(triggerName){
+		
 		$(window).trigger(triggerName)
 	}
+
+
+
+
+	
 }])
 

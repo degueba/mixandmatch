@@ -1287,7 +1287,7 @@ html, body {
     width: 45%;
 }
 
-#rex-mm-list .product__list {
+#list-products .product__list {
     overflow-y: scroll;
 }
 
@@ -1608,7 +1608,7 @@ body.duloren {
     background-color: #000;
 }
 
-div#rex-mm-list.duloren-list {
+div#list-products.duloren-list {
     background-color: #fff;
 }
 
@@ -1710,7 +1710,7 @@ body.alphabeto {
     background:url(/arquivos/background-alphabeto.png) #f7fbfe;
 }
 
-div#rex-mm-list.alphabeto-list {
+div#list-products.alphabeto-list {
     background-color: #fff;
 }
 
@@ -1799,7 +1799,6 @@ a.btn-armadillo, button.btn-armadillo {
 }
 
 .mainHeader {
-    background-color: #fff;
     padding: 20px;
     margin-bottom: 10px;
 }
@@ -1819,8 +1818,12 @@ body.armadillo {
     background:url(/arquivos/background-armadillo.png) #f7fbfe;
 }
 
-div#rex-mm-list.armadillo-list {
+div#list-products .product__list {
     background-color: #fff;
+}
+
+div#list-products .loading-carousel {
+    margin-top: 30px;
 }
 
 .armadillo-title {
@@ -1922,7 +1925,7 @@ body.peepou {
     background:url(/arquivos/background-peepou.png) #f7fbfe;
 }
 
-div#rex-mm-list.peepou-list {
+div#list-products.peepou-list {
     background-color: #fff;
 }
 
@@ -1992,7 +1995,110 @@ ul.nav.nav-tabs li a {
     background-color:#7E7E7E;
 }
 
-.tour-armadillo .popover-title {
+.tour-peepou .popover-title {
     background-color: #333333;
+    color: #fff;
+}
+
+
+/* Estilos FEMMINA */
+
+a.btn-femmina, button.btn-femmina {
+    border: 0;
+    outline: none;
+    background-color: #9B247C; 
+}
+
+.OMMixingandmatchContent button.btn-filter-femmina {
+    background-color: #9B247C;
+}
+
+.logo-femmina {
+    text-indent: -9999px;
+    background: url(/arquivos/logo-femmina.png) no-repeat center;
+    width: 100%;
+    height: 113px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -4px;
+    background-size: 80%
+}
+
+body.femmina {
+    background: #fff;
+}
+
+div.femmina-list {
+    background-color: #fff;
+}
+
+.femmina-title {
+    color: #A9DCD6;
+    text-align: center;
+}
+
+.rex-mix-and-match-filters-box-wrap .panel.filtro-femmina {
+    border: 1px solid #FFF8F6;
+    color: #fff;
+    background-color: #9B247C;
+}
+
+.rex-mix-and-match-filters-box .popover.femmina-popover {
+    background-color: #9B247C;
+}
+
+.rex-mix-and-match-filters-box .popover.femmina-popover .arrow{
+    border-right-color: #000;
+}
+
+.rex-mix-and-match-filters-box .popover.femmina-popover a {
+    color: #fff;
+}
+
+.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-femmina {
+    border: 1px solid #A9DCD6;
+}
+
+.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-femmina .title-femmina {
+    color: #9B247C;
+    border: 1px solid #9B247C;
+    background-color: #fff;
+}
+
+
+ul.nav.nav-tabs li a {
+    background-color: transparent;
+}
+
+.nav.nav-tabs li.tab__item--active a{
+    background-color: #fff;
+}
+
+.nav.nav-tabs li .tab-title-femmina, .nav.nav-tabs li .tab-title-femmina:active, .nav.nav-tabs li .tab-title-femmina:hover, .nav.nav-tabs li .tab-title-femmina:focus {
+    color: #A9DCD6;
+}
+
+.tour-femmina .btn {
+    border: none;
+}
+
+.tour-femmina .btn[data-role=prev]{
+    background-color:#9B247C;
+}
+
+.tour-femmina .btn[data-role=next]{
+    background-color:#9B247C;
+}
+
+.tour-femmina .btn.disabled {
+    cursor: no-drop !important; 
+}
+
+.tour-femmina .btn[data-role=end]{
+    background-color:#A9DCD6;
+}
+
+.tour-femmina .popover-title {
+    background-color: #A9DCD6;
     color: #fff;
 }

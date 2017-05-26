@@ -32,29 +32,29 @@
 	
     <meta name="viewport" content="width=device-width,initial-scale=1" />
 </head>
-<body class="OMMixingandmatch peepou">
+<body class="OMMixingandmatch femmina">
 		<div id="OMMixingandmatch" ng-app="OMMixingandmatch" ng-controller="mainCtrl" ng-class="{'loading' : loading}"> 
 			<!-- TABS -->
 			<div class="OMMixingandmatchContent">
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-2 col-sm-3 mainHeader">
-							<a href="" class="logo-peepou"> Compra Fácil</a>
+							<a href="" class="logo-femmina"> Compra Fácil</a>
 							<!--FILTERS DESK-->
 							<div class="col-sm-12 col-xs-12 hidden-xs">
 								<div class="rex-mix-and-match-filters" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
-									<h6 class="peepou-title">Refine sua busca</h6>
+									<h6 class="femmina-title">Refine sua busca</h6>
 										<div class="row">
 											<div class="rex-mix-and-match-filters-box-wrap">
 												<div class="rex-mix-and-match-filters-box col-md-12 col-sm-12 col-xs-12 skuSelection__item {{category.idClass}}" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
-													<div class="panel panel-default filtro-peepou">
+													<div class="panel panel-default filtro-femmina">
 														<div class="panel-body">
 															{{category.title}}
 														</div>
 													</div>
 													
 													<!--Filters-->
-													<div class="popover fade right peepou-popover">
+													<div class="popover fade right femmina-popover">
 														<div class="arrow"></div>
 														<div class="popover-content {{filter.idClass}}" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
 															<a href="" class="rex-mix-and-match-filters-box-link" ng-click="search(filter.param, idGroup)">
@@ -77,7 +77,7 @@
 								<!-- TABS Category -->
 								<ul class="nav nav-tabs">
 									<li class="active" id="step-{{$index}}" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)" data-toggle="tab" aria-expanded="true">
-										<a href="#top" class="tab-title-peepou">
+										<a href="#top" class="tab-title-femmina">
 											<h3>{{group.title}}</h3>
 											<div class="product-choose-mobile visible-xs" >
 													<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{combination[$index].images[0].imageId + '-314-314'}}/{{combination[$index].nameComplete}}.jpg" alt="" class="no-item">
@@ -133,7 +133,7 @@
 												
 
 									<!-- LIST OF PRODUCTS DESK AND TABLET -->
-									<div class="hidden-xs tab-content peepou-list" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+									<div class="hidden-xs tab-content femmina-list" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
 										<!-- tabs body -->
 										<div class="">
 											<ul class="product__list">
@@ -197,7 +197,7 @@
 								<!-- mobile -->
 								<div class="btn-filter-buy-mobile visible-xs row">
 									<div class="col-xs-6">
-											<button class="btn btn-primary btn-block btn-filter btn-filter-peepou hamburger is-closed" data-toggle="offcanvas">
+											<button class="btn btn-primary btn-block btn-filter btn-filter-femmina hamburger is-closed" data-toggle="offcanvas">
 												Filtros
 											</button>
 									
@@ -220,16 +220,16 @@
 								 	  </div>
 
 									  <div class="col-xs-6">
-										<a href="#" class="btn btn-primary btn-block btn-peepou" ng-click="cartAddItems()">Incluir conjunto</a>
+										<a href="#" class="btn btn-primary btn-block btn-femmina" ng-click="cartAddItems()">Incluir conjunto</a>
 									  </div>
 								   </div>
 								<!--fim mobile-->
 
 								<!-- desk and tablet -->
 								<div class="rex-mix-and-match-box-wrapper hidden-xs" id="box-combinacao">
-									<div class="rex-mix-and-match-box box-peepou">
+									<div class="rex-mix-and-match-box box-femmina">
 										<div class="panel panel-default">
-											<div class="panel-heading title-peepou">Sua combinação</div>
+											<div class="panel-heading title-femmina">Sua combinação</div>
 										</div>
 										<div class="rex-mix-and-match-box-content">
 											<div class="rex-mix-and-match-shelf-container">
@@ -239,7 +239,7 @@
 													</div>
 												</div>
 											</div>
-											<a href="#" class="btn btn-primary btn-block btn-peepou" ng-click="cartAddItems()">Incluir conjunto</a>
+											<a href="#" class="btn btn-primary btn-block btn-femmina" ng-click="cartAddItems()">Incluir conjunto</a>
 										</div>
 									</div>
 								</div>
@@ -250,9 +250,9 @@
 						  <!-- CART RESUME -->
 						  <div class="col-md-2 col-xs-12 hidden-xs">
 								<div class="rex-mix-and-match-box-wrapper" id="box-resumo">
-									<div class="rex-mix-and-match-box box-peepou">
+									<div class="rex-mix-and-match-box box-femmina">
 										<div class="panel panel-default">
-											<div class="panel-heading title-peepou">Resumo da compra</div>
+											<div class="panel-heading title-femmina">Resumo da compra</div>
 										</div>
 										<div class="rex-mix-and-match-shelf-buy">
 											<div class="rex-mix-and-match-shelf-container">
@@ -275,7 +275,7 @@
 											</div>
 										</div>
 
-											<a href="/checkout/#/orderform" class="btn btn-primary btn-block btn-peepou">Comprar conjunto</a>
+											<a href="/checkout/#/orderform" class="btn btn-primary btn-block btn-femmina">Comprar conjunto</a>
 									</div>
 								</div>
 							</div>
@@ -311,7 +311,7 @@
 			// Instance the tour
 			var tour = new Tour({
 				storage: false,
-				template: "<div class='popover tour tour-peepou'><div class='arrow'></div> <h3 class='popover-title'></h3> <div class='popover-content'></div> <div class='popover-navigation'><button class='btn btn-default' data-role='prev'>Voltar</button> <button class='btn btn-default' data-role='next'>Entendi</button>    </div><button class='btn btn-block btn-primary' data-role='end'>PULAR APRESENTAÇÃO</button></div>",
+				template: "<div class='popover tour tour-femmina'><div class='arrow'></div> <h3 class='popover-title'></h3> <div class='popover-content'></div> <div class='popover-navigation'><button class='btn btn-default' data-role='prev'>Voltar</button> <button class='btn btn-default' data-role='next'>Entendi</button>    </div><button class='btn btn-block btn-primary' data-role='end'>PULAR APRESENTAÇÃO</button></div>",
 				steps: [
 				{
 					element: "#step-0",

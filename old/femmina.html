@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.css">
+	<link href="http://comprafacillingerie.vteximg.com.br/arquivos/style-comprafacillingerie.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="arquivos/OMMixingandmatch.css">
+	<link rel="stylesheet" href="arquivos/cores.css">
+	<link rel="stylesheet" href="arquivos/bootstrap.css">
+	<link rel="stylesheet" href="arquivos/font-awesome.min.css">
+	<!--Plugin Step -->
+	<link rel="stylesheet" href="arquivos/bootstrap-tour.min.css">
+	<!---->
+
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script> 
+	<script type="text/javascript" src="http://io.vtex.com.br/vtex.js/2.4.1/vtex.js" ></script> 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js"></script> 
+	<script type="text/javascript" src="arquivos/angular.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-sanitize.js"></script>
+	<script type="text/javascript" src="arquivos/angular-locale_pt-br.js"></script>
+	<script type="text/javascript" src="arquivos/OMMixingandmatch.js"></script>	
+	<script type="text/javascript" src="arquivos/bootstrap.min.js"></script>
+	<script type="text/javascript" src="arquivos/bootstrap-tour.min.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+
+</head>
+<body class="OMMixingandmatch femmina">
+		<div id="OMMixingandmatch" ng-app="OMMixingandmatch" ng-controller="mainCtrl" ng-class="{'loading' : loading}"> 
+			<h1 class="titulo-1">Monte seu biquine</h1>
+			<!-- TABS -->
+			<div class="OMMixingandmatchContent">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-2 col-sm-3">
+							<a href="" class="logo-femmina"> Compra Fácil</a>
+
+							<!-- FILTERS MOBILE -->
+							<div class="col-sm-12 col-xs-12 visible-xs">
+								<button class="btn btn-default btn-block btn-filter btn-filter-femmina hamburger is-closed" data-toggle="offcanvas">
+									 Filtros
+								</button>
+							
+
+								<div id="wrapper">
+									<div class="overlay"></div>
+								
+									<!-- Sidebar -->
+									<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+										<span class="fa fa-times pull-right btn-filter-close" aria-hidden="true" data-toggle="offcanvas"></span>
+										<ul class="nav sidebar-nav" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+											<li class="dropdown" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{category.title}} <span class="caret"></span></a>
+												<ul class="dropdown-menu" role="menu">
+													<li class="dropdown-header" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
+														<a href="#" ng-click="search(filter.param, idGroup)"><i ng-bind-html="filter.ico"></i> <span>{{filter.title}}</span></a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+							<!-- /#sidebar-wrapper -->
+							<!---->
+							   
+							<!--FILTERS DESK-->
+							<div class="col-sm-12 col-xs-12 hidden-xs">
+								<div class="rex-mix-and-match-filters" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+									<h6 class="femmina-title">Refine sua busca</h6>
+										<div class="row">
+											<div class="rex-mix-and-match-filters-box-wrap">
+												<div class="rex-mix-and-match-filters-box col-md-12 col-sm-12 col-xs-12 skuSelection__item {{category.idClass}}" ng-repeat="category in group.categories" ng-class="{'last' : $last}">
+													<div class="panel panel-default filtro-femmina">
+														<div class="panel-body">
+															{{category.title}}
+														</div>
+													</div>
+													
+													<!--Filters-->
+													<div class="popover fade right femmina-popover">
+														<div class="arrow"></div>
+														<div class="popover-content {{filter.idClass}}" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
+															<a href="" class="rex-mix-and-match-filters-box-link" ng-click="search(filter.param, idGroup)">
+																<i ng-bind-html="filter.ico"></i>
+																<span>{{filter.title}}</span>
+															</a>                                 
+														</div>
+													</div>
+
+
+												</div> <!-- rex-mix-and-match-filters-box -->
+											</div>
+										</div>
+									</div>
+							   </div>
+							   <!---->
+						</div>
+						<div class="col-md-6 col-sm-9 col-xs-12">
+							<!-- TABS TOP -->
+							<ul class="nav nav-tabs">
+								<li class="active" id="step-{{$index}}" ng-repeat="group in categoryFilters" ng-class="{'tab__item--active' : selectedGroup == $index}" ng-click="selectGroup($index)" data-toggle="tab" aria-expanded="true">
+									<a href="#top" class="tab-title-femmina">
+										<h3>{{group.title}}</h3>
+										<p>{{group.description}}</p>
+									</a>
+								</li>
+							 </ul>
+
+							<!-- TABS CONTENT -->
+							<div id="rex-mm-list" class="tab-content femmina-list" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+									<!-- TABS BODY -->
+									<div class="">
+										<ul class="product__list">
+											<li id="product_{{product.productId}}" layout="0150b174-be14-41b3-a6e9-d84b22a7b694" class="product__item" ng-repeat="product in catalogResults[$index].items" ng-mouseenter="activeProduct(product)">
+												<div class="shelf-wrap">
+													<span class="idProd" data-id="2145865480"></span>
+													
+													<!--PRODUCT IMAGE-->
+													<div class="shelf-product-image">
+														<a title="Vestido Curto Prene Estampa Black Star" href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
+															<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{product.activeImageId}}-315-460/foto.jpg" alt="">
+														</a>
+													</div>
+													<!---->
+
+													<!-- PRODUCT INFO -->
+													<div class="shelf-product-info">
+														<div class="shelf-product-info-txt">
+															<p class="shelf-product-name">
+																<a title="Vestido Curto Prene Estampa Black Star" href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
+																<!--Vestido Curto Prene Estampa Black Star-->
+																</a>
+															</p>
+														   <ul class="product__sku {{variations.dimension}}" ng-repeat="variations in product.skuVariations">
+																<li class="product__skuItem {{variationClass(variations.dimension,optionValue)}}"
+																	ng-repeat="(optionKey, optionValue) in variations.options"
+																	ng-class="{'avaliable' : product.avaliableDimention[optionValue],'unavaliable' : !product.avaliableDimention[optionValue]}"
+																	ng-click="filterSku(variations.dimension,optionValue,product);skuActive($event,product.productId,variationClass(variations.dimension,optionValue),variations.dimension)"
+																>
+																	<span class="product__skuLink {{optionValue}}">
+																		{{optionValue}}
+																	</span>
+																</li>										
+															</ul>
+															<div class="product-price" ng-show="product.filteredSku.length && product.filteredSku[0].sellers[0].commertialOffer.AvailableQuantity">
+																<a href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
+																	<span class="installment">
+																		<!--<strong class="number-installment">6x</strong>-->
+																		de
+																		<strong class="value-installment">{{product.filteredSku[0].sellers[0].commertialOffer.ListPrice | currency : 'R$ ' : 2}}</strong>
+																	</span>
+																	<span class="best-price">Por <strong>{{product.filteredSku[0].sellers[0].commertialOffer.Price | currency : 'R$ ' : 2}}</strong></span>                 
+																</a>
+															</div>
+														</div>
+													</div>
+													<!---->
+												</div>
+											  </li>
+									   	   </ul>
+									   </div>
+									<!---->
+							    </div>
+								<!--<div class="tab-pane fade" id="bottom">
+										<p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+								</div> -->
+							  <!---->
+						 </div>
+
+						 <!-- VIEW COMBINATION -->
+						 <div class="col-md-2  col-xs-12">
+							<div class="rex-mix-and-match-box-wrapper" id="box-combinacao">
+								<div class="rex-mix-and-match-box box-femmina">
+									<div class="panel panel-default">
+										<div class="panel-heading title-femmina">Sua combinação</div>
+									</div>
+									<div class="rex-mix-and-match-box-content">
+										<div class="rex-mix-and-match-shelf-container">
+											<div class="rex-mix-and-match-shelf-prods" ng-repeat="(combinationKey, combinationValue) in combination">
+												<div class="rex-box-banner">
+													<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{combinationValue.images[0].imageId + '-314-314'}}/{{combinationValue.nameComplete}}.jpg" alt="" class="no-item">
+												</div>
+											</div>
+										</div>
+										<a href="#" class="btn btn-primary btn-block btn-femmina" ng-click="cartAddItems()">Incluir conjunto</a>
+									</div>
+								 </div>
+							 </div>
+						  </div>
+						  <!---->
+
+						  <!-- CART RESUME -->
+						  <div class="col-md-2 col-xs-12">
+								<div class="rex-mix-and-match-box-wrapper" id="box-resumo">
+									<div class="rex-mix-and-match-box box-femmina">
+										<div class="panel panel-default">
+											<div class="panel-heading title-femmina">Resumo da compra</div>
+										</div>
+										<div class="rex-mix-and-match-shelf-buy">
+											<div class="rex-mix-and-match-shelf-container">
+												<div class="rex-mix-and-match-shelf-item" ng-repeat="item in orderForm.items">
+													<a class="rex-mix-and-match-shelf-item-remove" ng-click="cartRemoveItem($index)"><i class="icon-cog"></i></a>
+													<div class="rex-box-banner">
+														<img ng-src="{{item.imageUrl}}" width="55" height="55"/>                
+													</div>
+													<div class="rex-mix-and-match-shelf-item-info">
+														<p>{{item.name}}</p>
+														<div class="rex-product-price">
+															<span class="best-price">Por <strong>{{item.price | currency : 'R$ ' : 2}}</strong></span>
+															<span class="installment">
+																de
+																<strong class="value-installment" ng-show="item.sellingPrice > item.price">{{item.listPrice | currency : 'R$ ' : 2}}</strong>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+											<a href="/checkout/#/orderform" class="btn btn-primary btn-block btn-femmina">Comprar conjunto</a>
+									</div>
+								</div>
+							</div>
+							<!---->
+					  </div>
+					</div>
+				</div>				
+			</div>
+		
+	</div>
+
+
+	<script type="text/javascript">
+		$(function() {
+			var conteudoPai = $(".product__list, .rex-mix-and-match-box").parents('.OMMixingandmatchContent');
+			var alturaMonitor = $(window).height();
+			var alturaTab = $('.titulo-1').height();
+
+			if(conteudoPai.css('max-height') == "none"){
+				$(".product__list").height(alturaMonitor - alturaTab - $("#step-0").height() - 25);
+				$(".rex-mix-and-match-box").height(alturaMonitor - alturaTab - 50);
+			} else {
+				$(".product__list").height(conteudoPai.css('max-height'));
+				$(".rex-mix-and-match-box").height(conteudoPai.css('max-height'));
+			}
+			
+			// Instance the tour
+			var tour = new Tour({
+				storage: false,
+				template: "<div class='popover tour tour-femmina'><div class='arrow'></div> <h3 class='popover-title'></h3> <div class='popover-content'></div> <div class='popover-navigation'><button class='btn btn-default' data-role='prev'>Voltar</button> <button class='btn btn-default' data-role='next'>Entendi</button>    </div><button class='btn btn-block btn-primary' data-role='end'>PULAR APRESENTAÇÃO</button></div>",
+				steps: [
+				{
+					element: "#step-0",
+					title: "(1 de 5) Abas/Partes de biquini",
+					content: "Navegue pelas abas para montar o seu biquíni. Na aba TOP você escolherá a parte de cima, e na aba CALCINHA a parte de baixo."
+				},
+				{
+					element: "#tab-0",
+					title: "(2 de 5) Variações de Produtos",
+					content: "Selecione ao lado as variações correspondentes ao MODELO do biquíni, COR/ESTAMPA e TAMANHO para encontrar o seu produto ideal."
+				},
+				{
+					element: "#rex-mm-list",
+					title: "(3 de 5) Resultados",
+					content: "Os resultados serão carregados nesse espaço de acordo com a sua seleção de modelo, cor/estampa e tamanho."
+				},
+				{
+					element: "#box-combinacao",
+					title: "(4 de 5) Combinação",
+					content: "Nesta ârea você visualizará o resultado da combinação da parte de cima do seu biquini (TOP) e da parte de baixo (CALCINHA), podendo também incluir ou não no resumo da compra algum produto escolhido anteriormente."
+				},
+				{
+					element: "#box-resumo",
+					title: "(5 de 5) Resumo da compra",
+					content: "Nesta área você visualizará todos os produtos que foram incluídos no resumo de compra. Podendo alterar, deletar ou alterar o produto ou suas informações.",
+					placement: "left"
+				}
+			]});
+
+			// Initialize the tour
+			tour.init();
+			tour.start();
+
+			/*Menu Filters Mobile*/
+			var trigger = $('.hamburger, .btn-filter-close'),
+				overlay = $('.overlay'),
+				isClosed = false;
+
+				trigger.click(function () {
+					hamburger_cross();      
+				});
+
+				function hamburger_cross() {
+					if (isClosed == true) {          
+						overlay.hide();
+						trigger.removeClass('is-open');
+						trigger.addClass('is-closed');
+						isClosed = false;
+					} else {   
+						overlay.show();
+						trigger.removeClass('is-closed');
+						trigger.addClass('is-open');
+						isClosed = true;
+					}
+				}
+			
+			$('[data-toggle="offcanvas"]').click(function () {
+					$('#wrapper').toggleClass('toggled');
+			});  
+			
+		});
+	</script>
+</body>
+</html>

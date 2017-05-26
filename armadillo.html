@@ -88,51 +88,52 @@
 								</ul>
 								<!---->
 
-								<!-- LIST OF PRODUCTS MOBILE -->
-								<div class="product-list-mobile visible-xs">
-									<div id="rex-mm-list" class="tab-content owl-carousel" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
-											<div id="product_{{product.productId}}" class="" ng-repeat="product in catalogResults[$index].items" ng-mouseenter="activeProduct(product)" ng-init="$last?triggerEvent('recarregarSlide'):null" >
-												<span class="idProd" data-id="2145865480"></span>
-												<div class="product-image-mobile">
-													<!-- product image -->
-														<a title="Vestido Curto Prene Estampa Black Star" href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
-															<img ng-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{product.activeImageId}}-315-460/foto.jpg" alt="">
-														</a>
-													<!---->
-
-													<!-- product options -->
-														<ul class="product__sku {{variations.dimension}}" ng-repeat="variations in product.skuVariations">
-															<li class="product__skuItem {{variationClass(variations.dimension,optionValue)}}"
-																ng-repeat="(optionKey, optionValue) in variations.options"
-																ng-class="{'avaliable' : product.avaliableDimention[optionValue],'unavaliable' : !product.avaliableDimention[optionValue]}"
-																ng-click="filterSku(variations.dimension,optionValue,product);skuActive($event,product.productId,variationClass(variations.dimension,optionValue),variations.dimension)"
-															>
-																<span class="product__skuLink {{optionValue}}">
-																	{{optionValue}}
-																</span>
-															</li>										
-														</ul>
-														<div class="product-price text-center" ng-show="product.filteredSku.length && product.filteredSku[0].sellers[0].commertialOffer.AvailableQuantity">
-															<a href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
-																<span class="installment">
-																	<!--<strong class="number-installment">6x</strong>-->
-																	de
-																	<strong class="value-installment">{{product.filteredSku[0].sellers[0].commertialOffer.ListPrice | currency : 'R$ ' : 2}}</strong>
-																</span>
-																<span class="best-price">Por <strong>{{product.filteredSku[0].sellers[0].commertialOffer.Price | currency : 'R$ ' : 2}}</strong></span>                 
+								<div id="list-products">
+									<!-- LIST OF PRODUCTS MOBILE -->
+									<div class="product-list-mobile visible-xs">
+										<div class="tab-content owl-carousel owl-{{$index}}" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+												<div id="product_{{product.productId}}" class="" ng-repeat="product in catalogResults[$index].items" ng-mouseenter="activeProduct(product)" ng-init="$last?triggerEvent('recarregarSlide'):null" >
+													<span class="idProd" data-id="2145865480"></span>
+													<div class="product-image-mobile">
+														<!-- product image -->
+															<a title="Vestido Curto Prene Estampa Black Star" href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
+																<img class="owl-lazy" data-src="http://comprafacillingerie.vteximg.com.br/arquivos/ids/{{product.activeImageId}}-315-460/foto.jpg" alt="">
 															</a>
-														</div>
-													 <!---->
-												</div>	
+														<!---->
+
+														<!-- product options -->
+															<ul class="product__sku {{variations.dimension}}" ng-repeat="variations in product.skuVariations">
+																<li class="product__skuItem {{variationClass(variations.dimension,optionValue)}}"
+																	ng-repeat="(optionKey, optionValue) in variations.options"
+																	ng-class="{'avaliable' : product.avaliableDimention[optionValue],'unavaliable' : !product.avaliableDimention[optionValue]}"
+																	ng-click="filterSku(variations.dimension,optionValue,product);skuActive($event,product.productId,variationClass(variations.dimension,optionValue),variations.dimension)"
+																>
+																	<span class="product__skuLink {{optionValue}}">
+																		{{optionValue}}
+																	</span>
+																</li>										
+															</ul>
+															<div class="product-price text-center" ng-show="product.filteredSku.length && product.filteredSku[0].sellers[0].commertialOffer.AvailableQuantity">
+																<a href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
+																	<span class="installment">
+																		<!--<strong class="number-installment">6x</strong>-->
+																		de
+																		<strong class="value-installment">{{product.filteredSku[0].sellers[0].commertialOffer.ListPrice | currency : 'R$ ' : 2}}</strong>
+																	</span>
+																	<span class="best-price">Por <strong>{{product.filteredSku[0].sellers[0].commertialOffer.Price | currency : 'R$ ' : 2}}</strong></span>                 
+																</a>
+															</div>
+														<!---->
+													</div>	
+												</div>
 											</div>
-										</div>
 									</div>
 									<!---->
 
-											
+												
 
 									<!-- LIST OF PRODUCTS DESK AND TABLET -->
-									<div id="rex-mm-list" class="hidden-xs tab-content armadillo-list" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
+									<div class="hidden-xs tab-content armadillo-list" id="tab-{{$index}}" ng-repeat="group in categoryFilters" ng-show="selectedGroup == $index" ng-init="idGroup = $index">
 										<!-- tabs body -->
 										<div class="">
 											<ul class="product__list">
@@ -166,8 +167,8 @@
 																			{{optionValue}}
 																		</span>
 																	</li>										
-																 </ul>
-																 <div class="product-price" ng-show="product.filteredSku.length && product.filteredSku[0].sellers[0].commertialOffer.AvailableQuantity">
+																</ul>
+																<div class="product-price" ng-show="product.filteredSku.length && product.filteredSku[0].sellers[0].commertialOffer.AvailableQuantity">
 																	<a href="http://www.lojacaos.com.br/vestido-curto-de-malha-prene-estampa--estrela--com-41367_estampado/p">
 																		<span class="installment">
 																			<!--<strong class="number-installment">6x</strong>-->
@@ -176,7 +177,7 @@
 																		</span>
 																		<span class="best-price">Por <strong>{{product.filteredSku[0].sellers[0].commertialOffer.Price | currency : 'R$ ' : 2}}</strong></span>                 
 																	</a>
-																 </div>
+																</div>
 															</div>
 														</div>
 														<!---->
@@ -186,6 +187,7 @@
 											</div>
 										</div>
 										<!---->
+								</div>
 							</div>
 							
 
@@ -208,7 +210,7 @@
 														<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{category.title}} <span class="caret"></span></a>
 														<ul class="dropdown-menu" role="menu">
 															<li class="dropdown-header" ng-repeat="filter in category.filters" ng-class="{'last' : $last}">
-																<a href="#" ng-click="search(filter.param, idGroup)"><i ng-bind-html="filter.ico"></i> <span>{{filter.title}}</span></a>
+																<a href="#" ng-click="search(filter.param, idGroup, true)"><i ng-bind-html="filter.ico"></i> <span>{{filter.title}}</span></a>
 															</li>
 														</ul>
 													</li>
@@ -322,7 +324,7 @@
 					content: "Selecione ao lado as variações correspondentes ao MODELO do biquíni, COR/ESTAMPA e TAMANHO para encontrar o seu produto ideal."
 				},
 				{
-					element: "#rex-mm-list",
+					element: "#list-products",
 					title: "(3 de 5) Resultados",
 					content: "Os resultados serão carregados nesse espaço de acordo com a sua seleção de modelo, cor/estampa e tamanho."
 				},
@@ -367,27 +369,7 @@
 			$('[data-toggle="offcanvas"]').click(function () {
 					$('#wrapper').toggleClass('toggled');
 			});  
-
-
-			$(window).on('recarregarSlide',function(){
-				
-				setTimeout(function() {
-				$('.owl-carousel').owlCarousel({
-					loop:true,
-					autoWidth:true,
-					nav: true,
-					items: 1,
-					responsive:{
-						600:{
-							items:1
-						}
-					},
-					center: true,
-					navText : ["&#8678;","&#8680;"],
-					autoHeight:true
-				});
-				}, 1000);
-			})
+	
 
 			});
 
