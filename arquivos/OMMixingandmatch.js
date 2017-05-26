@@ -538,7 +538,7 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 							}
 						},
 						center: true,
-						navText : ["&#8678;","&#8680;"],
+						navText : ["",""],
 						autoHeight:true,
 						onChange: moved
 					});
@@ -669,7 +669,7 @@ app.controller("mainCtrl", ['$scope','$filter','$http','vtexService',function($s
 								}
 							},
 							center: true,
-							navText : ["&#8678;","&#8680;"],
+							navText : ["",""],
 							autoHeight:true,
 							onChange: moved
 						});

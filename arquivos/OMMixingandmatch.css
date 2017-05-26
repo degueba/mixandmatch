@@ -41,7 +41,7 @@ html, body {
     text-indent: -9999px;
     background: url(/arquivos/logo.png) no-repeat center;
     width: 100%;
-    height: 113px;
+    height: 60px;
     display: inline-block;
     vertical-align: middle;
     margin-right: -4px;
@@ -772,7 +772,7 @@ html, body {
 
 #OMMixingandmatch .checkoutList__title {
     font-weight: bold;
-    color: #333333;
+    color: #000;
     text-transform: uppercase;
     margin-left: 20px
 }
@@ -1298,9 +1298,19 @@ html, body {
   and (min-device-width: 320px) 
   and (max-device-width: 568px) {
 
-      .mainHeader {
+    .mainHeader {
         margin: 20px 20px;
-      }
+    }
+
+    .OMMixingandmatchContent button.btn-filter::after {
+        font-family: FontAwesome;
+        font-size: 20px;
+        content: "\f0b0";
+        position: absolute;
+        right: 40px;
+        top: 4px;
+    }
+
 
       .toggled .overlay {
             width: 100%;
@@ -1361,24 +1371,39 @@ html, body {
           width: 100%;
       }
 
-      .owl-carousel .owl-nav .owl-next, .owl-carousel .owl-nav .owl-prev {
-        text-indent: -9999;
-        position: absolute;
-        height: 30px;
-        bottom: 10px;
-        color: #000;
-        font-size: 25px;
-      }
+    
+
+      .owl-carousel .owl-nav .owl-prev,
+         .owl-carousel .owl-nav .owl-next {
+            font-family: 'fontAwesome';
+            text-indent: -9999;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            bottom: 10px;
+            color: #000;
+            font-size: 25px;
+        }
+
+        .owl-carousel .owl-nav .owl-prev:before{
+            content: "\f053";
+            margin-right:10px;
+        }
+
+        .owl-carousel .owl-nav .owl-next:after{           
+            content: "\f054";
+            margin-right:10px;
+        }
 
       
 
-      .owl-carousel .owl-nav .owl-next{
-        right: 10px;
-      }
+        .owl-carousel .owl-nav .owl-next{
+            right: 10px;
+        }
 
-      .owl-carousel .owl-nav .owl-prev {
-        left: 15px;
-      }
+        .owl-carousel .owl-nav .owl-prev {
+            left: 15px;
+        }
 
     /*MENU FILTERS*/
     #wrapper {
@@ -1401,7 +1426,6 @@ html, body {
         margin-left: -220px;
         overflow-y: auto;
         overflow-x: hidden;
-        background: #1a1a1a;
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;
         -o-transition: all 0.5s ease;
@@ -1451,34 +1475,7 @@ html, body {
             transition: width .2s ease-in;
 
 }
-.sidebar-nav li:first-child a {
-    color: #fff;
-    background-color: #1a1a1a;
-}
-.sidebar-nav li:nth-child(2):before {
-    background-color: #ec1b5a;   
-}
-.sidebar-nav li:nth-child(3):before {
-    background-color: #79aefe;   
-}
-.sidebar-nav li:nth-child(4):before {
-    background-color: #314190;   
-}
-.sidebar-nav li:nth-child(5):before {
-    background-color: #279636;   
-}
-.sidebar-nav li:nth-child(6):before {
-    background-color: #7d5d81;   
-}
-.sidebar-nav li:nth-child(7):before {
-    background-color: #ead24c;   
-}
-.sidebar-nav li:nth-child(8):before {
-    background-color: #2d2366;   
-}
-.sidebar-nav li:nth-child(9):before {
-    background-color: #35acdf;   
-}
+
 .sidebar-nav li:hover:before,
 .sidebar-nav li.open:hover:before {
     width: 100%;
@@ -1519,7 +1516,6 @@ html, body {
     margin: 0;
     border-radius: 0;
     border: none;
-    background-color: #222;
     box-shadow: none;
 }
 
@@ -1586,519 +1582,925 @@ html, body {
 
 
 
-/* Estilos Duloren */
-
-a.btn-duloren, button.btn-duloren {
-    border: 0;
-    outline: none;
-    background-color: #f06; 
-}
+/*
+
+
+    ___  ___   _  __    __           ___   __   _   _____            ___  ___       ___   _____   _____   _ _  
+    /   |/   | | | \ \  / /          /   | |  \ | | |  _  \          /   |/   |     /   | |_   _| /  ___| | | | | 
+   / /|   /| | | |  \ \/ /          / /| | |   \| | | | | |         / /|   /| |    / /| |   | |   | |     | |_| | 
+  / / |__/ | | | |   }  {          / / | | | |\   | | | | |        / / |__/ | |   / / | |   | |   | |     |  _  | 
+ / /       | | | |  / /\ \        / /  | | | | \  | | |_| |       / /       | |  / /  | |   | |   | |___  | | | | 
+/_/        |_| |_| /_/  \_\      /_/   |_| |_|  \_| |_____/      /_/        |_| /_/   |_|   |_|   \_____| |_| |_|  
 
-.OMMixingandmatchContent button.btn-filter-duloren {
-    background-color: #f06;
-}
+                        O QUE ESTILIZAMOS EM CADA TEMA? 
+                   
+                        1 | DEFAULT (BOTOES, LOGO, BODY)
+                        2 | MENU LEFT SIDEBAR (LATERAL - SOMENTE MOBILE)
+                        3 | LISTA DE PRODUTOS
+                        4 | CARROSSEL (OWL CAROUSEL)
+                        5 | FILTROS E POPOVER DOS FILTROS
+                        6 | BOX LATERAL RIGHT (COMBINATION AND CART RESUME) (ONLY VISIBLE IN DESK)
+                        7 | TABS TOP CATEGORIAS (EX: TOP E CALCINHA)
+                        8 | BOOTSTRAP TOUR
 
-.logo-duloren {
-    text-indent: -9999px;
-    background: url(/arquivos/duloren-logo.png) no-repeat center;
-    width: 100%;
-    height: 113px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: -4px;
-    background-size: 80%
-}
-
-body.duloren {
-    background-color: #000;
-}
-
-div#list-products.duloren-list {
-    background-color: #fff;
-}
-
-.duloren-title {
-    color: #fff;
-    text-align: center;
-}
-
-.rex-mix-and-match-filters-box-wrap .panel.filtro-duloren {
-    border: 1px solid #f06;
-    color: #fff;
-    background-color: #f06;
-}
-
-.rex-mix-and-match-filters-box .popover.duloren-popover {
-    background-color: #f06;
-    color: #fff;
-}
-
-.rex-mix-and-match-filters-box .popover.duloren-popover a {
-    color: #fff;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-duloren {
-    border: 1px solid #f06;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-duloren .title-duloren {
-    color: #f06;
-}
-
-
-ul.nav.nav-tabs li a {
-    background-color: transparent;
-}
-
-.nav.nav-tabs li.tab__item--active a{
-    background-color: #fff;
-}
-
-.nav.nav-tabs li .tab-title-duloren, .nav.nav-tabs li .tab-title-duloren:active, .nav.nav-tabs li .tab-title-duloren:hover, .nav.nav-tabs li .tab-title-duloren:focus {
-    color: #f06;
-}
-
-.tour-duloren .btn {
-    border: none;
-}
-
-.tour-duloren .btn[data-role=prev]{
-    background-color:#f8adcc;
-}
-
-.tour-duloren .btn[data-role=next]{
-    background-color:#f06;
-}
-
-.tour-duloren .btn.disabled {
-    cursor: no-drop !important; 
-}
-
-.tour-duloren .btn[data-role=end]{
-    background-color:#000;
-}
-
-.tour-duloren .popover-title {
-    background-color: #f06;
-    color: #fff;
-}
-
-/* ==== */
-
-
-
+*/
 
-/* Estilos ALPHABETO */
-
-a.btn-alphabeto, button.btn-alphabeto {
-    border: 0;
-    outline: none;
-    background-color: #eda400; 
-}
-
-.OMMixingandmatchContent button.btn-filter-alphabeto {
-    background-color: #eda400;
-}
 
-.logo-alphabeto {
-    text-indent: -9999px;
-    background: url(/arquivos/alphabeto-logo.png) no-repeat center;
-    width: 100%;
-    height: 113px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: -4px;
-    background-size: 80%
-}
-
-body.alphabeto {
-    background:url(/arquivos/background-alphabeto.png) #f7fbfe;
-}
-
-div#list-products.alphabeto-list {
-    background-color: #fff;
-}
-
-.alphabeto-title {
-    color: #eda400;
-    text-align: center;
-}
-
-.rex-mix-and-match-filters-box-wrap .panel.filtro-alphabeto {
-    border: 1px solid #eda400;
-    color: #fff;
-    background-color: #eda400;
-}
-
-.rex-mix-and-match-filters-box .popover.alphabeto-popover {
-    background-color: #EE4F65;
-}
-
-.rex-mix-and-match-filters-box .popover.alphabeto-popover .arrow{
-    border-right-color: #EE4F65;
-}
-
-.rex-mix-and-match-filters-box .popover.alphabeto-popover a {
-    color: #fff;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-alphabeto {
-    border: 1px solid #eda400;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-alphabeto .title-alphabeto {
-    color: #eda400;
-    background-color: #f7fbfe;
-}
-
-
-ul.nav.nav-tabs li a {
-    background-color: transparent;
-}
-
-.nav.nav-tabs li.tab__item--active a{
-    background-color: #fff;
-}
-
-.nav.nav-tabs li .tab-title-alphabeto, .nav.nav-tabs li .tab-title-alphabeto:active, .nav.nav-tabs li .tab-title-alphabeto:hover, .nav.nav-tabs li .tab-title-alphabeto:focus {
-    color: #eda400;
-}
-
-.tour-alphabeto .btn {
-    border: none;
-}
-
-.tour-alphabeto .btn[data-role=prev]{
-    background-color:#EE4F65;
-}
-
-.tour-alphabeto .btn[data-role=next]{
-    background-color:#eda400;
-}
-
-.tour-alphabeto .btn.disabled {
-    cursor: no-drop !important; 
-}
-
-.tour-alphabeto .btn[data-role=end]{
-    background-color:#EE4F65;
-}
-
-.tour-alphabeto .popover-title {
-    background-color: #eda400;
-    color: #fff;
-}
-
-
-/* Estilos ARMADILLO */
-
-a.btn-armadillo, button.btn-armadillo {
-    border: 0;
-    outline: none;
-    background-color: #38AF49; 
-}
-
-
-.OMMixingandmatchContent button.btn-filter-armadillo {
-    background-color: #333333;
-}
-
-.logo-armadillo {
-    text-indent: -9999px;
-    background: url(/arquivos/logo-armadillo.png) no-repeat center;
-    width: 100%;
-    height: 35px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: -4px;
-    background-size: contain:
-}
-
-body.armadillo {
-    background:url(/arquivos/background-armadillo.png) #f7fbfe;
-}
-
-div#list-products .product__list {
-    background-color: #fff;
-}
-
-div#list-products .loading-carousel {
-    margin-top: 30px;
-}
-
-.armadillo-title {
-    color: #38AF49;
-    text-align: center;
-}
-
-.rex-mix-and-match-filters-box-wrap .panel.filtro-armadillo {
-    border: 1px solid #38AF49;
-    color: #fff;
-    background-color: #38AF49;
-}
-
-.rex-mix-and-match-filters-box .popover.armadillo-popover {
-    background-color: #000;
-}
-
-.rex-mix-and-match-filters-box .popover.armadillo-popover .arrow{
-    border-right-color: #000;
-}
-
-.rex-mix-and-match-filters-box .popover.armadillo-popover a {
-    color: #fff;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-armadillo {
-    border: 1px solid #38AF49;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-armadillo .title-armadillo {
-    color: #38AF49;
-    border: 1px solid #38AF49;
-    background-color: #fff;
-}
-
-
-ul.nav.nav-tabs li a {
-    background-color: transparent;
-}
-
-.nav.nav-tabs li.tab__item--active a{
-    background-color: #fff;
-}
-
-.nav.nav-tabs li .tab-title-armadillo, .nav.nav-tabs li .tab-title-armadillo:active, .nav.nav-tabs li .tab-title-armadillo:hover, .nav.nav-tabs li .tab-title-armadillo:focus {
-    color: #38AF49;
-}
-
-.tour-armadillo .btn {
-    border: none;
-}
-
-.tour-armadillo .btn[data-role=prev]{
-    background-color:#d8d8d8;
-}
-
-.tour-armadillo .btn[data-role=next]{
-    background-color:#38AF49;
-}
-
-.tour-armadillo .btn.disabled {
-    cursor: no-drop !important; 
-}
-
-.tour-armadillo .btn[data-role=end]{
-    background-color:#000;
-}
-
-.tour-armadillo .popover-title {
-    background-color: #38AF49;
-    color: #fff;
-}
-
-
-/* Estilos PEEPOU */
-
-a.btn-peepou, button.btn-peepou {
-    border: 0;
-    outline: none;
-    background-color: #ed7d77; 
-}
-
-.OMMixingandmatchContent button.btn-filter-peepou {
-    background-color: #ed7d77;
-}
-
-.logo-peepou {
-    text-indent: -9999px;
-    background: url(/arquivos/logo-peepou.png) no-repeat center;
-    width: 100%;
-    height: 113px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: -4px;
-    background-size: 80%
-}
-
-body.peepou {
-    background:url(/arquivos/background-peepou.png) #f7fbfe;
-}
-
-div#list-products.peepou-list {
-    background-color: #fff;
-}
-
-.peepou-title {
-    color: #333333;
-    text-align: center;
-}
-
-.rex-mix-and-match-filters-box-wrap .panel.filtro-peepou {
-    border: 1px solid #FFF8F6;
-    color: #fff;
-    background-color: #ed7d77;
-}
-
-.rex-mix-and-match-filters-box .popover.peepou-popover {
-    background-color: #000;
-}
-
-.rex-mix-and-match-filters-box .popover.peepou-popover .arrow{
-    border-right-color: #000;
-}
-
-.rex-mix-and-match-filters-box .popover.peepou-popover a {
-    color: #fff;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-peepou {
-    border: 1px solid #ed7d77;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-peepou .title-peepou {
-    color: #ed7d77;
-    border: 1px solid #ed7d77;
-    background-color: #fff;
-}
-
-
-ul.nav.nav-tabs li a {
-    background-color: transparent;
-}
-
-.nav.nav-tabs li.tab__item--active a{
-    background-color: #fff;
-}
-
-.nav.nav-tabs li .tab-title-peepou, .nav.nav-tabs li .tab-title-peepou:active, .nav.nav-tabs li .tab-title-peepou:hover, .nav.nav-tabs li .tab-title-peepou:focus {
-    color: #333333;
-}
-
-.tour-peepou .btn {
-    border: none;
-}
-
-.tour-peepou .btn[data-role=prev]{
-    background-color:#E3A5AC;
-}
-
-.tour-peepou .btn[data-role=next]{
-    background-color:#ed7d77;
-}
-
-.tour-peepou .btn.disabled {
-    cursor: no-drop !important; 
-}
-
-.tour-peepou .btn[data-role=end]{
-    background-color:#7E7E7E;
-}
-
-.tour-peepou .popover-title {
-    background-color: #333333;
-    color: #fff;
-}
-
-
-/* Estilos FEMMINA */
-
-a.btn-femmina, button.btn-femmina {
-    border: 0;
-    outline: none;
-    background-color: #9B247C; 
-}
-
-.OMMixingandmatchContent button.btn-filter-femmina {
-    background-color: #9B247C;
-}
-
-.logo-femmina {
-    text-indent: -9999px;
-    background: url(/arquivos/logo-femmina.png) no-repeat center;
-    width: 100%;
-    height: 65px;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: -4px;
-    background-size: 80%
-}
-
-body.femmina {
-    background: #fff;
-}
-
-div.femmina-list {
-    background-color: #fff;
-}
-
-.femmina-title {
-    color: #A9DCD6;
-    text-align: center;
-}
-
-.rex-mix-and-match-filters-box-wrap .panel.filtro-femmina {
-    border: 1px solid #FFF8F6;
-    color: #fff;
-    background-color: #9B247C;
-}
-
-.rex-mix-and-match-filters-box .popover.femmina-popover {
-    background-color: #9B247C;
-}
-
-.rex-mix-and-match-filters-box .popover.femmina-popover .arrow{
-    border-right-color: #000;
-}
-
-.rex-mix-and-match-filters-box .popover.femmina-popover a {
-    color: #fff;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-femmina {
-    border: 1px solid #A9DCD6;
-}
-
-.rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-femmina .title-femmina {
-    color: #9B247C;
-    border: 1px solid #9B247C;
-    background-color: #fff;
-}
-
-
-ul.nav.nav-tabs li a {
-    background-color: transparent;
-}
-
-.nav.nav-tabs li.tab__item--active a{
-    background-color: #fff;
-}
-
-.nav.nav-tabs li .tab-title-femmina, .nav.nav-tabs li .tab-title-femmina:active, .nav.nav-tabs li .tab-title-femmina:hover, .nav.nav-tabs li .tab-title-femmina:focus {
-    color: #A9DCD6;
-}
-
-.tour-femmina .btn {
-    border: none;
-}
-
-.tour-femmina .btn[data-role=prev]{
-    background-color:#9B247C;
-}
-
-.tour-femmina .btn[data-role=next]{
-    background-color:#9B247C;
-}
-
-.tour-femmina .btn.disabled {
-    cursor: no-drop !important; 
-}
-
-.tour-femmina .btn[data-role=end]{
-    background-color:#A9DCD6;
-}
-
-.tour-femmina .popover-title {
-    background-color: #A9DCD6;
-    color: #fff;
-}
+
+
+/**============================================**/
+            /*--> ESTILO ALPHABETO <--*/
+/**============================================**/
+
+
+            /*-- DEFAULT (BOTOES, LOGO, BODY) --*/
+
+            body.alphabeto {
+                background:url(/arquivos/background-alphabeto.png) #f7fbfe;
+            }
+            
+            a.btn-alphabeto, button.btn-alphabeto {
+                border: 0;
+                outline: none;
+                background-color: #eda400; 
+            }
+
+            .OMMixingandmatchContent button.btn-filter-alphabeto {
+                background-color: #eda400;
+            }
+
+            .logo-alphabeto {
+                text-indent: -9999px;
+                background: url(/arquivos/alphabeto-logo.png) no-repeat center;
+                width: 100%;
+                height: 60px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: -4px;
+                background-size: 50%;
+            }
+
+            /*----*/
+
+
+            /*-- MENU LEFT SIDEBAR (LATERAL) - MOBILE --*/
+
+            .alphabeto .alphabeto-sidebar .sidebar-nav .dropdown-menu li a, .alphabeto .alphabeto-sidebar .sidebar-nav li:first-child a {
+                color: #fff;
+            }
+
+            .alphabeto .alphabeto-sidebar .sidebar-nav .dropdown-menu,
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(5):before,
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(7):before,
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(9):before {
+                background-color: #EE4F65; 
+            }
+
+            .alphabeto .alphabeto-sidebar,
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:before,
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(2):before, 
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(4):before, 
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(6):before, 
+            .alphabeto .alphabeto-sidebar .sidebar-nav li:nth-child(8):before {
+                background-color: #eda400;   
+            }
+
+            /*----*/
+
+
+            /*--- LISTA DE PRODUTOS ---*/
+
+            div#list-products .alphabeto-list {
+                background-color: #fff;
+            }
+
+            .alphabeto-title {
+                color: #eda400;
+                text-align: center;
+            }
+
+            /*****-- ($) Price Product ($) --*****/
+            .alphabeto .price-alphabeto a {
+                color: #eda400;
+                font-size: 15px;
+            }
+            /* ---- */
+
+
+            /*--- CARROUSEL ---*/
+
+            .alphabeto .owl-carousel .owl-nav .owl-prev,
+            .alphabeto .owl-carousel .owl-nav .owl-next {
+                    color: #eda400;
+            }
+
+            /*----*/
+
+            /*--- FILTROS E POPOVER DOS FILTROS ---*/
+
+            .rex-mix-and-match-filters-box-wrap .panel.filtro-alphabeto {
+                border: 1px solid #eda400;
+                color: #fff;
+                background-color: #eda400;
+            }
+
+            .rex-mix-and-match-filters-box .popover.alphabeto-popover {
+                background-color: #EE4F65;
+            }
+
+            .rex-mix-and-match-filters-box .popover.alphabeto-popover .arrow{
+                border-right-color: #EE4F65;
+            }
+
+            .rex-mix-and-match-filters-box .popover.alphabeto-popover a {
+                color: #fff;
+            }
+
+            /*----*/
+
+
+            /*---- BOX LATERAL RIGHT (COMBINATION AND CART RESUME) (ONLY VISIBLE IN DESK) ---*/
+
+             .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-alphabeto {
+                border: 1px solid #eda400;
+            }
+
+            .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-alphabeto .title-alphabeto {
+                color: #eda400;
+                background-color: #f7fbfe;
+            }
+
+            /*----*/
+
+            /*--- TABS TOP ---*/
+
+            ul.nav.nav-tabs li a {
+                background-color: transparent;
+            }
+
+            .nav.nav-tabs li.tab__item--active a{
+                background-color: #fff;
+            }
+
+            .nav.nav-tabs li .tab-title-alphabeto, .nav.nav-tabs li .tab-title-alphabeto:active, .nav.nav-tabs li .tab-title-alphabeto:hover, .nav.nav-tabs li .tab-title-alphabeto:focus {
+                color: #eda400;
+            }
+
+            /*----*/
+
+
+            /*-- BOOTSTRAP TOUR --*/
+
+            .tour-alphabeto .btn {
+                border: none;
+            }
+
+            .tour-alphabeto .btn[data-role=prev]{
+                background-color:#EE4F65;
+            }
+
+            .tour-alphabeto .btn[data-role=next]{
+                background-color:#eda400;
+            }
+
+            .tour-alphabeto .btn.disabled {
+                cursor: no-drop !important; 
+            }
+
+            .tour-alphabeto .btn[data-role=end]{
+                background-color:#EE4F65;
+            }
+
+            .tour-alphabeto .popover-title {
+                background-color: #eda400;
+                color: #fff;
+            }
+
+            /* ---- */
+
+
+/**============================================**/
+/**============================================**/
+
+
+
+
+
+
+
+
+/**============================================**/
+            /*--> ESTILO ARMADILLO <--*/
+/**============================================**/
+
+
+            /*-- DEFAULT (BOTOES, LOGO, BODY) --*/
+
+            body.armadillo {
+                background:url(/arquivos/background-armadillo.png) #f7fbfe;
+            }
+            
+            a.btn-armadillo, button.btn-armadillo {
+                border: 0;
+                outline: none;
+                background-color: #38AF49; 
+            }
+
+            .OMMixingandmatchContent button.btn-filter-armadillo {
+                background-color: #38AF49;
+            }
+
+            .logo-armadillo {
+                text-indent: -9999px;
+                background: url(/arquivos/logo-armadillo.png) no-repeat center;
+                width: 100%;
+                height: 60px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: -4px;
+                background-size: 50%;
+            }
+
+            /*----*/
+
+
+            /*-- MENU LEFT SIDEBAR (LATERAL) - MOBILE --*/
+
+            .armadillo .armadillo-sidebar .sidebar-nav .dropdown-menu li a, .armadillo .armadillo-sidebar .sidebar-nav li:first-child a {
+                color: #fff;
+            }
+
+            .armadillo .armadillo-sidebar .sidebar-nav .dropdown-menu,
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(5):before,
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(7):before,
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(9):before {
+                background-color: #333333; 
+            }
+
+            .armadillo .armadillo-sidebar,
+            .armadillo .armadillo-sidebar .sidebar-nav li:before,
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(2):before, 
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(4):before, 
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(6):before, 
+            .armadillo .armadillo-sidebar .sidebar-nav li:nth-child(8):before {
+                background-color: #38AF49;   
+            }
+
+
+            /*----*/
+
+
+            /*--- LISTA DE PRODUTOS ---*/
+
+            div#list-products .armadillo-list {
+                background-color: #fff;
+            }
+
+            .armadillo-title {
+                color: #38AF49;
+                text-align: center;
+            }
+
+            /*****-- ($) Price Product ($) --*****/
+            .armadillo .price-armadillo a {
+                color: #38AF49;
+                font-size: 15px;
+            }
+            /* ---- */
+
+
+            /*--- CARROUSEL ---*/
+
+            .armadillo .owl-carousel .owl-nav .owl-prev,
+            .armadillo .owl-carousel .owl-nav .owl-next {
+                    color: #38AF49;
+            }
+
+            /*----*/
+
+            /*--- FILTROS E POPOVER DOS FILTROS ---*/
+
+            .rex-mix-and-match-filters-box-wrap .panel.filtro-armadillo {
+                border: 1px solid #38AF49;
+                color: #fff;
+                background-color: #38AF49;
+            }
+
+            .rex-mix-and-match-filters-box .popover.armadillo-popover {
+                background-color: #333333;
+            }
+
+            .rex-mix-and-match-filters-box .popover.armadillo-popover .arrow{
+                border-right-color: #333333;
+            }
+
+            .rex-mix-and-match-filters-box .popover.armadillo-popover a {
+                color: #fff;
+            }
+
+            /*----*/
+
+
+            /*---- BOX LATERAL RIGHT (COMBINATION AND CART RESUME) (ONLY VISIBLE IN DESK) ---*/
+
+             .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-armadillo {
+                border: 1px solid #38AF49;
+            }
+
+            .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-armadillo .title-armadillo {
+                color: #38AF49;
+                background-color: #f7fbfe;
+            }
+
+            /*----*/
+
+            /*--- TABS TOP ---*/
+
+            ul.nav.nav-tabs li a {
+                background-color: transparent;
+            }
+
+            .nav.nav-tabs li.tab__item--active a{
+                background-color: #fff;
+            }
+
+            .nav.nav-tabs li .tab-title-armadillo, .nav.nav-tabs li .tab-title-armadillo:active, .nav.nav-tabs li .tab-title-armadillo:hover, .nav.nav-tabs li .tab-title-armadillo:focus {
+                color: #38AF49;
+            }
+
+            /*----*/
+
+
+            /*-- BOOTSTRAP TOUR --*/
+
+            .tour-armadillo .btn {
+                border: none;
+            }
+
+            .tour-armadillo .btn[data-role=prev]{
+                background-color:#333333;
+            }
+
+            .tour-armadillo .btn[data-role=next]{
+                background-color:#38AF49;
+            }
+
+            .tour-armadillo .btn.disabled {
+                cursor: no-drop !important; 
+            }
+
+            .tour-armadillo .btn[data-role=end]{
+                background-color:#333333;
+            }
+
+            .tour-armadillo .popover-title {
+                background-color: #38AF49;
+                color: #fff;
+            }
+
+            /* ---- */
+
+
+/**============================================**/
+/**============================================**/
+
+
+
+
+
+/**============================================**/
+            /*--> ESTILO PEEPOU <--*/
+/**============================================**/
+
+
+            /*-- DEFAULT (BOTOES, LOGO, BODY) --*/
+
+            body.peepou {
+                background:url(/arquivos/background-peepou.png) #f7fbfe;
+            }
+            
+            a.btn-peepou, button.btn-peepou {
+                border: 0;
+                outline: none;
+                background-color: #ed7d77; 
+            }
+
+            .OMMixingandmatchContent button.btn-filter-peepou {
+                background-color: #ed7d77;
+            }
+
+            .logo-peepou {
+                text-indent: -9999px;
+                background: url(/arquivos/logo-peepou.png) no-repeat center;
+                width: 100%;
+                height: 60px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: -4px;
+                background-size: 50%;
+            }
+
+            /*----*/
+
+
+            /*-- MENU LEFT SIDEBAR (LATERAL) - MOBILE --*/
+
+            .peepou .peepou-sidebar .sidebar-nav .dropdown-menu li a, .peepou .peepou-sidebar .sidebar-nav li:first-child a {
+                color: #fff;
+            }
+
+            .peepou .peepou-sidebar .sidebar-nav .dropdown-menu,
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(5):before,
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(7):before,
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(9):before {
+                background-color: #000; 
+            }
+
+            .peepou .peepou-sidebar,
+            .peepou .peepou-sidebar .sidebar-nav li:before,
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(2):before, 
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(4):before, 
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(6):before, 
+            .peepou .peepou-sidebar .sidebar-nav li:nth-child(8):before {
+                background-color: #ed7d77;   
+            }
+
+
+            /*----*/
+
+
+            /*--- LISTA DE PRODUTOS ---*/
+
+            div#list-products .peepou-list {
+                background-color: #fff;
+            }
+
+            .peepou-title {
+                color: #ed7d77;
+                text-align: center;
+            }
+
+                /*****-- ($) Price Product ($) --*****/
+                .peepou .price-peepou a {
+                    color: #ed7d77;
+                    font-size: 15px;
+                }
+                /*****-- ($) Price Product ($) --*****/
+            /* ---- */
+
+
+            /*--- CARROUSEL ---*/
+
+            .peepou .owl-carousel .owl-nav .owl-prev,
+            .peepou .owl-carousel .owl-nav .owl-next {
+                    color: #ed7d77;
+            }
+
+            /*----*/
+
+            /*--- FILTROS E POPOVER DOS FILTROS ---*/
+
+            .rex-mix-and-match-filters-box-wrap .panel.filtro-peepou {
+                border: 1px solid #ed7d77;
+                color: #fff;
+                background-color: #ed7d77;
+            }
+
+            .rex-mix-and-match-filters-box .popover.peepou-popover {
+                background-color: #000;
+            }
+
+            .rex-mix-and-match-filters-box .popover.peepou-popover .arrow{
+                border-right-color: #000;
+            }
+
+            .rex-mix-and-match-filters-box .popover.peepou-popover a {
+                color: #fff;
+            }
+
+            /*----*/
+
+
+            /*---- BOX LATERAL RIGHT (COMBINATION AND CART RESUME) (ONLY VISIBLE IN DESK) ---*/
+
+             .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-peepou {
+                border: 1px solid #ed7d77;
+            }
+
+            .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-peepou .title-peepou {
+                color: #ed7d77;
+                background-color: #f7fbfe;
+            }
+
+            /*----*/
+
+            /*--- TABS TOP ---*/
+
+            ul.nav.nav-tabs li a {
+                background-color: transparent;
+            }
+
+            .nav.nav-tabs li.tab__item--active a{
+                background-color: #fff;
+            }
+
+            .nav.nav-tabs li .tab-title-peepou, .nav.nav-tabs li .tab-title-peepou:active, .nav.nav-tabs li .tab-title-peepou:hover, .nav.nav-tabs li .tab-title-peepou:focus {
+                color: #ed7d77;
+            }
+
+            /*----*/
+
+
+            /*-- BOOTSTRAP TOUR --*/
+
+            .tour-peepou .btn {
+                border: none;
+            }
+
+            .tour-peepou .btn[data-role=prev]{
+                background-color:#000;
+            }
+
+            .tour-peepou .btn[data-role=next]{
+                background-color:#ed7d77;
+            }
+
+            .tour-peepou .btn.disabled {
+                cursor: no-drop !important; 
+            }
+
+            .tour-peepou .btn[data-role=end]{
+                background-color:#000;
+            }
+
+            .tour-peepou .popover-title {
+                background-color: #ed7d77;
+                color: #fff;
+            }
+
+            /* ---- */
+
+
+/**============================================**/
+/**============================================**/
+
+
+
+/**============================================**/
+            /*--> ESTILO FEMMINA <--*/
+/**============================================**/
+
+
+            /*-- DEFAULT (BOTOES, LOGO, BODY) --*/
+
+            body.femmina {
+                background:url(/arquivos/background-femmina.png) #f7fbfe;
+            }
+            
+            a.btn-femmina, button.btn-femmina {
+                border: 0;
+                outline: none;
+                background-color: #9b247c; 
+            }
+
+            .OMMixingandmatchContent button.btn-filter-femmina {
+                background-color: #9b247c;
+            }
+
+            .logo-femmina {
+                text-indent: -9999px;
+                background: url(/arquivos/logo-femmina.png) no-repeat center;
+                width: 100%;
+                height: 60px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: -4px;
+                background-size: 50%;
+            }
+
+            /*----*/
+
+
+            /*-- MENU LEFT SIDEBAR (LATERAL) - MOBILE --*/
+
+            .femmina .femmina-sidebar .sidebar-nav .dropdown-menu li a, .femmina .femmina-sidebar .sidebar-nav li:first-child a {
+                color: #fff;
+            }
+
+            .femmina .femmina-sidebar .sidebar-nav .dropdown-menu,
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(5):before,
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(7):before,
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(9):before {
+                background-color: #A9DCD6; 
+            }
+
+            .femmina .femmina-sidebar,
+            .femmina .femmina-sidebar .sidebar-nav li:before,
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(2):before, 
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(4):before, 
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(6):before, 
+            .femmina .femmina-sidebar .sidebar-nav li:nth-child(8):before {
+                background-color: #9b247c;   
+            }
+
+
+            /*----*/
+
+
+            /*--- LISTA DE PRODUTOS ---*/
+
+            div#list-products .femmina-list {
+                background-color: #fff;
+            }
+
+            .femmina-title {
+                color: #9b247c;
+                text-align: center;
+            }
+
+                /*****-- ($) Price Product ($) --*****/
+                .femmina .price-femmina a {
+                    color: #9b247c;
+                    font-size: 15px;
+                }
+                /*****-- ($) Price Product ($) --*****/
+            /* ---- */
+
+
+            /*--- CARROUSEL ---*/
+
+            .femmina .owl-carousel .owl-nav .owl-prev,
+            .femmina .owl-carousel .owl-nav .owl-next {
+                    color: #9b247c;
+            }
+
+            /*----*/
+
+            /*--- FILTROS E POPOVER DOS FILTROS ---*/
+
+            .rex-mix-and-match-filters-box-wrap .panel.filtro-femmina {
+                border: 1px solid #9b247c;
+                color: #fff;
+                background-color: #9b247c;
+            }
+
+            .rex-mix-and-match-filters-box .popover.femmina-popover {
+                background-color: #A9DCD6;
+            }
+
+            .rex-mix-and-match-filters-box .popover.femmina-popover .arrow{
+                border-right-color: #A9DCD6;
+            }
+
+            .rex-mix-and-match-filters-box .popover.femmina-popover a {
+                color: #fff;
+            }
+
+            /*----*/
+
+
+            /*---- BOX LATERAL RIGHT (COMBINATION AND CART RESUME) (ONLY VISIBLE IN DESK) ---*/
+
+             .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-femmina {
+                border: 1px solid #9b247c;
+            }
+
+            .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-femmina .title-femmina {
+                color: #9b247c;
+                background-color: #f7fbfe;
+            }
+
+            /*----*/
+
+            /*--- TABS TOP ---*/
+
+            ul.nav.nav-tabs li a {
+                background-color: transparent;
+            }
+
+            .nav.nav-tabs li.tab__item--active a{
+                background-color: #fff;
+            }
+
+            .nav.nav-tabs li .tab-title-femmina, .nav.nav-tabs li .tab-title-femmina:active, .nav.nav-tabs li .tab-title-femmina:hover, .nav.nav-tabs li .tab-title-femmina:focus {
+                color: #9b247c;
+            }
+
+            /*----*/
+
+
+            /*-- BOOTSTRAP TOUR --*/
+
+            .tour-femmina .btn {
+                border: none;
+            }
+
+            .tour-femmina .btn[data-role=prev]{
+                background-color:#A9DCD6;
+            }
+
+            .tour-femmina .btn[data-role=next]{
+                background-color:#9b247c;
+            }
+
+            .tour-femmina .btn.disabled {
+                cursor: no-drop !important; 
+            }
+
+            .tour-femmina .btn[data-role=end]{
+                background-color:#A9DCD6;
+            }
+
+            .tour-femmina .popover-title {
+                background-color: #9b247c;
+                color: #fff;
+            }
+
+            /* ---- */
+
+
+/**============================================**/
+/**============================================**/
+
+
+/**============================================**/
+            /*--> ESTILO DULOREN <--*/
+/**============================================**/
+
+
+            /*-- DEFAULT (BOTOES, LOGO, BODY) --*/
+
+            body.duloren {
+                background:url(/arquivos/background-duloren.png) #000;
+            }
+            
+            a.btn-duloren, button.btn-duloren {
+                border: 0;
+                outline: none;
+                background-color: #f06; 
+            }
+
+            .OMMixingandmatchContent button.btn-filter-duloren {
+                background-color: #f06;
+            }
+
+            .logo-duloren {
+                text-indent: -9999px;
+                background: url(/arquivos/duloren-logo.png) no-repeat center;
+                width: 100%;
+                height: 60px;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: -4px;
+                background-size: 50%;
+            }
+
+            /*----*/
+
+
+            /*-- MENU LEFT SIDEBAR (LATERAL) - MOBILE --*/
+
+            .duloren .duloren-sidebar .sidebar-nav .dropdown-menu li a, .duloren .duloren-sidebar .sidebar-nav li:first-child a {
+                color: #f06;
+                background-color: #fff;
+            }
+
+            .duloren .duloren-sidebar .sidebar-nav .dropdown-menu,
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(5):before,
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(7):before,
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(9):before {
+                background-color: #fff;
+                color: #f06;
+            }
+
+            .duloren .duloren-sidebar,
+            .duloren .duloren-sidebar .sidebar-nav li:before,
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(2):before, 
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(4):before, 
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(6):before, 
+            .duloren .duloren-sidebar .sidebar-nav li:nth-child(8):before {
+                background-color: #f06;   
+            }
+
+
+            /*----*/
+
+
+            /*--- LISTA DE PRODUTOS ---*/
+
+            div#list-products .duloren-list {
+                background-color: #fff;
+            }
+
+            .duloren-title {
+                color: #f06;
+                text-align: center;
+            }
+
+                /*****-- ($) Price Product ($) --*****/
+                .duloren .price-duloren a {
+                    color: #f06;
+                    font-size: 15px;
+                }
+                /*****-- ($) Price Product ($) --*****/
+            /* ---- */
+
+
+            /*--- CARROUSEL ---*/
+
+            .duloren .owl-carousel .owl-nav .owl-prev,
+            .duloren .owl-carousel .owl-nav .owl-next {
+                    color: #f06;
+            }
+
+            /*----*/
+
+            /*--- FILTROS E POPOVER DOS FILTROS ---*/
+
+            .rex-mix-and-match-filters-box-wrap .panel.filtro-duloren {
+                border: 1px solid #f06;
+                color: #fff;
+                background-color: #f06;
+            }
+
+            .rex-mix-and-match-filters-box .popover.duloren-popover {
+                background-color: #fff;
+            }
+
+            .rex-mix-and-match-filters-box .popover.duloren-popover .arrow{
+                border-right-color: #fff;
+            }
+
+            .rex-mix-and-match-filters-box .popover.duloren-popover a {
+                color: #f06;
+            }
+
+            /*----*/
+
+
+            /*---- BOX LATERAL RIGHT (COMBINATION AND CART RESUME) (ONLY VISIBLE IN DESK) ---*/
+
+             .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-duloren {
+                border: 1px solid #f06;
+            }
+
+            .rex-mix-and-match-box-wrapper .rex-mix-and-match-box.box-duloren .title-duloren {
+                color: #f06;
+                background-color: #f7fbfe;
+            }
+
+            /*----*/
+
+            /*--- TABS TOP ---*/
+
+            ul.nav.nav-tabs li a {
+                background-color: transparent;
+            }
+
+            .nav.nav-tabs li.tab__item--active a{
+                background-color: #fff;
+            }
+
+            .nav.nav-tabs li .tab-title-duloren, .nav.nav-tabs li .tab-title-duloren:active, .nav.nav-tabs li .tab-title-duloren:hover, .nav.nav-tabs li .tab-title-duloren:focus {
+                color: #f06;
+            }
+
+            /*----*/
+
+
+            /*-- BOOTSTRAP TOUR --*/
+
+            .tour-duloren .btn {
+                border: none;
+            }
+
+            .tour-duloren .btn[data-role=prev]{
+                background-color:#000;
+            }
+
+            .tour-duloren .btn[data-role=next]{
+                background-color:#f06;
+            }
+
+            .tour-duloren .btn.disabled {
+                cursor: no-drop !important; 
+            }
+
+            .tour-duloren .btn[data-role=end]{
+                background-color:#000;
+            }
+
+            .tour-duloren .popover-title {
+                background-color: #f06;
+                color: #fff;
+            }
+
+            /* ---- */
+
+
+/**============================================**/
+/**============================================**/
+
+
+
+
